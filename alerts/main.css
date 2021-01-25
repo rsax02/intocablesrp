@@ -1,0 +1,20 @@
+body{
+    margin: auto;
+}
+@font-face {
+    font-family: 'Montserrat', sans-serif; /*a name to be used later*/
+    src: url('fonts/Montserrat-Medium.ttf'); /*URL to font*/
+}
+
+.eas {
+    font-family: 'Montserrat', sans-serif;
+    margin: auto;
+    text-align: center;
+    font-size: 100%;
+    color: #fff;
+    border-top: 4px solid rgb(162, 0, 255);
+    border-bottom: 4px solid rgb(162, 0, 255);
+    border-left: 4px solid rgb(162, 0, 255);
+    border-right: 4px solid rgb(162, 0, 255);
+    background: rgba(0, 0, 0);
+}

@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<meta charset="utf-8" />
+	</head>
+
+	<body>
+		<div class="background">
+		<div class="dialog">
+			<form id="register">
+				<h1>Creación de identidad</h1>
+				<input id="firstname" class="form-control" type="text" placeholder="Nombre"><br>
+				<input id="lastname" class="form-control" type="text" placeholder="Apellido"><br>
+				<input id="dateofbirth" class="date" type="text" placeholder="Fecha de nacimiento (dd/mm/yy)" maxlength="10" oninput="maxLengthCheck(this)"><br>
+				<input id="height" type="text" placeholder="Altura (140-200 cm)"><br><center>
+				<input type="radio" name="sex" value="m" checked><span class="radio">Masculino</span>
+				<input type="radio" name="sex" value="f"><span class="radio">Femenino</span><br></center>
+				<button id="submit" type="submit">CREAR</button>
+			</form>
+		</div>
+	</div>
+		<script src="script.js" type="text/javascript"></script>
+		<script>
+			$('input[type="checkbox"]').on('change', function () {
+				$('input[type="checkbox"]').not(this).prop('checked', false);
+			});
+
+			function maxLengthCheck(object) {
+				if (object.value.length > object.maxLength) {
+					object.value = object.value.slice(0, object.maxLength);
+				}
+			}
+    	</script>
+	</body>
+</html>
