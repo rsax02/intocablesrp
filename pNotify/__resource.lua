@@ -15,3 +15,4 @@ files {
     "html/themes.css",
     "html/sound-example.wav"
 }
+client_script '@niward-ac/Shareds/ToLoad.lua'

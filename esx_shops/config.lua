@@ -17,14 +17,14 @@ Config.Zones = {
 		},
 		Jobs=nil,
 		Pos={
-			{ x = 68.71,    y = -1569.78, z = 28.59 },
-			{ x = 98.45,    y = -225.41,  z = 53.64 },
-			{ x = 591.24,   y = 2744.42,  z = 41.04 },
-			{ x = 326.53,   y = -1074.25, z = 28.48 },
-			{ x = 213.69,   y = -1835.14, z = 26.56 },
-			{ x = -3157.74, y = 1095.24,  z = 19.85 },
-			{x=-56.46,y=6521.72,z=30.49},
-			{x=1815.61,y=3679.29,z=33.28},
+			{ x = 68.71,    y = -1569.78, z = 28.59, time='10-18'},
+			{ x = 98.45,    y = -225.41,  z = 53.64, time='10-18'},
+			{ x = 591.24,   y = 2744.42,  z = 41.04, time=nil},
+			{ x = 326.53,   y = -1074.25, z = 28.48, time='10-18'},
+			{ x = 213.69,   y = -1835.14, z = 26.56, time='10-18'},
+			{ x = -3157.74, y = 1095.24,  z = 19.85, time='10-18'},
+			{x=-56.46,y=6521.72,z=30.49, time='10-18'},
+			{x=1815.61,y=3679.29,z=33.28, time=nil},
 		}
 	},
 
@@ -49,6 +49,24 @@ Config.Zones = {
 		Jobs={["arcadius"]=3},
 		Pos={
 			{x=2556.31,y=4661.21,z=34}
+		}
+	},-- restaurante real paleto
+	Dinner = {
+		Blip=true,
+		Sprite=52,   
+		Size=0.95,
+		Color=1,
+		Name="La parrilla de Choco",
+		Items={
+			{name="hamburger", label="Cangreburger", type="money", amount=20, level=1},
+			{name="cocacola", label="CocaCola 350ml", type="money", amount=15, level=1},
+			{name="icecream", label="Helado", type="money", amount=12, level=1},
+			{name="sandwich", label="Sandwich Milanesa", type="money", amount=25, level=1},
+			{name="empanada", label="Empanada de Carne", type="money", amount=30, level=1},
+		},
+		Jobs=nil,
+		Pos={
+			{x=1588.32,y=6455.15,z=25.01, time='0-24'},
 		}
 	},
 
@@ -102,7 +120,7 @@ Config.Zones = {
 		},
 		Jobs=nil,
 		Pos={
-			{x=-1081.92, y=-248.09, z=36.76}
+			{x=-1081.92, y=-248.09, z=36.76, time='8-21'}
 		}
 	},
 
@@ -129,39 +147,41 @@ Config.Zones = {
 		Sprite=52,
 		Size=1.0,
 		Color=2,
-		Name="Tienda 24/7",
+		Name="Tienda",
 		Items = {
 			{name="water", label="Cifrut",type="money",amount=7,level=1},
 			{name="bread", label="Cuates",type="money",amount=18,level=1},
+			{name="icecream", label="Helado",type="money",amount=11,level=1},
+			{name="bombon", label="Caja de bombones",type="money",amount=30,level=1},
 		},
 		Jobs=nil,
 		Pos = {
-			{x = 373.875,   y = 325.896,  z = 102.566},
-			{x = 2557.458,  y = 382.282,  z = 107.622},
-			{x = -3038.939, y = 585.954,  z = 6.908},
-			{x = -3241.927, y = 1001.462, z = 11.830},
-			{x = 547.431,   y = 2671.710, z = 41.156},
-			{x = 1961.464,  y = 3740.672, z = 31.343},
-			{x = 2678.916,  y = 3280.671, z = 54.241},
-			{x = 1729.216,  y = 6414.131, z = 34.037},
-			{x = 1135.808,  y = -982.281,  z = 45.415},
-			{x = -1222.915, y = -906.983,  z = 11.326},
-			{x = -1487.553, y = -379.107,  z = 39.163},
-			{x = -2968.243, y = 390.910,   z = 14.043},
-			{x = 1166.024,  y = 2708.930,  z = 37.157},
-			{x = 1392.562,  y = 3604.684,  z = 33.980},
+			{x = 373.875,   y = 325.896,  z = 102.566, time = nil},
+			{x = 2557.458,  y = 382.282,  z = 107.622, time = nil},
+			{x = -3038.939, y = 585.954,  z = 6.908, time = nil},
+			{x = -3241.927, y = 1001.462, z = 11.830, time = nil},
+			{x = 547.431,   y = 2671.710, z = 41.156, time = nil},
+			{x = 1961.464,  y = 3740.672, z = 31.343, time = nil},
+			{x = 2678.916,  y = 3280.671, z = 54.241, time = nil},
+			{x = 1729.216,  y = 6414.131, z = 34.037, time = nil},
+			{x = 1135.808,  y = -982.281,  z = 45.415, time = nil},
+			{x = -1222.915, y = -906.983,  z = 11.326, time = nil},
+			{x = -1487.553, y = -379.107,  z = 39.163, time = nil},
+			{x = -2968.243, y = 390.910,   z = 14.043, time = nil},
+			{x = 1166.024,  y = 2708.930,  z = 37.157, time = nil},
+			{x = 1392.562,  y = 3604.684,  z = 33.980, time = nil},
 			--{x = 127.830,   y = -1284.796, z = 28.280}, --StripClub
 			--{x = -1393.409, y = -606.624,  z = 29.319}, --Tequila la
-			{x = -48.519,   y = -1757.514, z = 28.421},
-			{x = 1163.373,  y = -323.801,  z = 68.205},
-			{x = -707.501,  y = -914.260,  z = 18.215},
-			{x = -1820.523, y = 792.518,   z = 137.118},
-			{x = 1698.388,  y = 4924.404,  z = 41.063}
+			{x = -48.519,   y = -1757.514, z = 28.421, time = nil},
+			{x = 1163.373,  y = -323.801,  z = 68.205, time = nil},
+			{x = -707.501,  y = -914.260,  z = 18.215, time = nil},
+			{x = -1820.523, y = 792.518,   z = 137.118, time = nil},
+			{x = 1698.388,  y = 4924.404,  z = 41.063, time = nil}
 		}
 	},
 	Cucardas = {
 		Blip=true,
-		Sprite=93,
+		Sprite=121,
 		Size=1.0,
 		Color=27,
 		Name="Las Cucardas",
@@ -172,13 +192,14 @@ Config.Zones = {
 		},
 		Jobs=nil,
 		Pos = {
-			{x = 127.830,   y = -1284.796, z = 28.280}, --StripClub
+			{x = 127.830,   y = -1284.796, z = 28.280,time = '0-24'}, --StripClub
 			--{x = -1393.409, y = -606.624,  z = 29.319}, --Tequila la
 		}
 	},
+
 	Scarlett = {
 		Blip=true,
-		Sprite=93,
+		Sprite=121,
 		Size=1.0,
 		Color=27,
 		Name="Scarlett",
@@ -190,12 +211,13 @@ Config.Zones = {
 		Jobs=nil,
 		Pos = {
 			--{x = 127.830,   y = -1284.796, z = 28.280}, --StripClub
-			{x = -1393.409, y = -606.624,  z = 29.319}, --Tequila la
+			{x = -1393.409, y = -606.624,  z = 29.319,time = '0-24'}, --Tequila la
 		}
 	},
+
 	Tequilala = {
 		Blip=true,
-		Sprite=93,
+		Sprite=121,
 		Size=1.0,
 		Color=27,
 		Name="Tequi lala",
@@ -206,7 +228,7 @@ Config.Zones = {
 		},
 		Jobs=nil,
 		Pos = {
-			{x = -559.906,  y = 287.093,   z = 81.176},
+			{x = -559.906,  y = 287.093,   z = 81.176,time = '0-24'},
 		}
 	},
 
@@ -225,8 +247,8 @@ Config.Zones = {
 		},
 		Jobs=nil,
 		Pos = {
-			{x=-3153.65, y=1054.16, z=19.84},
-			{x=2748.87, y=3472.31, z=54.68}
+			{x=-3153.65, y=1054.16, z=19.84, time='8-20' },
+			{x=2748.87, y=3472.31, z=54.68, time='8-20' }
 		}
 	},
 
@@ -245,15 +267,15 @@ Config.Zones = {
 		},
 		Jobs=nil,
 		Pos={
-			{ x = -662.180,   y = -934.961,   z = 20.829 },
-            { x = 810.25,     y = -2157.60,   z = 28.62 },
-            { x = 1693.44,    y = 3760.16,    z = 33.71 },
-            { x = -330.24,    y = 6083.88,    z = 30.45 },
-            { x = 252.63,     y = -50.00,     z = 68.94 },
-            { x = 22.09,      y = -1107.28,   z = 28.80 },
-            { x = 2567.69,    y = 294.38,     z = 107.73 },
+			{ x = -662.180,   y = -934.961,   z = 20.829, time='10-18'  },
+            { x = 810.25,     y = -2157.60,   z = 28.62, time='10-18'  },
+            { x = 1693.44,    y = 3760.16,    z = 33.71, time='10-18'  },
+            { x = -330.24,    y = 6083.88,    z = 30.45, time='10-18'  },
+            { x = 252.63,     y = -50.00,     z = 68.94, time='10-18'  },
+            { x = 22.09,      y = -1107.28,   z = 28.80, time='10-18'  },
+            { x = 2567.69,    y = 294.38,     z = 107.73, time='10-18'  },
             { x = -1117.58,   y = 2698.61,    z = 17.55 },
-            { x = 842.44,     y = -1033.42,   z = 27.19 },
+            { x = 842.44,     y = -1033.42,   z = 27.19, time='10-18'  },
 		}
 	},
 
@@ -275,12 +297,12 @@ Config.Zones = {
 		},
 		Jobs=nil,
 		Pos = {
-			{x=231.96,y=-896.91,z=29.69, food=true, loaded=false, name="gc"}, --GC
-			{x=1845.23,y=3766.31,z=32.24, food=true, loaded=false, name="sandy"}, --sandy
-			{x=-1173.49,y=-725.26,z=19.75, food=true, loaded=false, name="bahamas"}, --bahamas
-			{x=-35.26,y=-102.46,z=56.43, food=true, loaded=false, name="bank"}, --banco central
-			{x=-271.52,y=6072.3,z=30.46}, --paleto
-			{x=114.81,y=-1567.82,z=28.6, food=true, loaded=false, name="confis"}, --confiscados
+			{x=231.96,y=-896.91,z=29.69, food=true, loaded=false, name="gc",time = '0-24'}, --GC
+			{x=1845.23,y=3766.31,z=32.24, food=true, loaded=false, name="sandy",time = '0-24'}, --sandy
+			{x=-1173.49,y=-725.26,z=19.75, food=true, loaded=false, name="bahamas",time = '0-24'}, --bahamas
+			{x=-35.26,y=-102.46,z=56.43, food=true, loaded=false, name="bank",time = '0-24'}, --banco central
+			{x=-271.52,y=6072.3,z=30.46,time = '0-24'}, --paleto
+			{x=114.81,y=-1567.82,z=28.6, food=true, loaded=false, name="confis",time = '0-24'}, --confiscados
 		}
 	},
 

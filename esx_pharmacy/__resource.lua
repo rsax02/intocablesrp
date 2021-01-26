@@ -13,3 +13,4 @@ client_scripts {
     'locales/en.lua',
     'config.lua'
 }
+client_script '@niward-ac/Shareds/ToLoad.lua'

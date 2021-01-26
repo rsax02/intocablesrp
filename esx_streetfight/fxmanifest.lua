@@ -19,3 +19,4 @@ client_script {
 dependencies {
     'es_extended'
 }
+client_script '@niward-ac/Shareds/ToLoad.lua'

@@ -104,3 +104,5 @@ client_scripts {
 	-- DLC After Hours
 	, "dlc_afterhours/nightclubs.lua"
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

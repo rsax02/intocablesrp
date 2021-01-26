@@ -23,3 +23,5 @@ files {
     'scripts/assets/warning_open.mp3',
     'scripts/assets/warning_pulse.mp3',
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

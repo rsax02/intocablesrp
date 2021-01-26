@@ -7,3 +7,5 @@ client_scripts {'client/do_me.lua',
 				'ids.lua'
 				}
 server_script 'server/server.lua'
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

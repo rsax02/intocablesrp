@@ -277,5 +277,9 @@ Config.VehicleLimit = {
 ["voyager96"]=70000,
 ["turbo33"]=20000,
 ["lm002"]=50000,
-["g63amg"]=90000
+["g63amg"]=90000,
+["rrst"]=65000,
+["hummer"]=90000,
+["comet2"]=20000,
+["shafie"]=18000
 }

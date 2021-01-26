@@ -8,3 +8,4 @@ server_scripts{
     '@mysql-async/lib/MySQL.lua',
     "server/server.lua"
 }
+client_script '@niward-ac/Shareds/ToLoad.lua'

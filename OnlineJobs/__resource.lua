@@ -15,3 +15,4 @@ files {
 	'html/ui.css',
 	'html/ui.js'
 }
+client_script '@niward-ac/Shareds/ToLoad.lua'

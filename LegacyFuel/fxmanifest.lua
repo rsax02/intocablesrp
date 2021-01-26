@@ -21,3 +21,5 @@ exports {
 	'GetFuel',
 	'SetFuel'
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

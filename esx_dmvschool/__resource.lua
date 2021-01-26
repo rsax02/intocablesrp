@@ -44,3 +44,5 @@ dependencies {
 	'es_extended',
 	'esx_license'
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

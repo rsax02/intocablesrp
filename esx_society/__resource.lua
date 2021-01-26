@@ -24,3 +24,5 @@ dependencies {
 	'cron',
 	'esx_addonaccount'
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

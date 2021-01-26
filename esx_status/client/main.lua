@@ -47,12 +47,18 @@ AddEventHandler('esx_status:unregisterStatus', function(name)
 	end
 end)
 
+local armour,health
+
 RegisterNetEvent('esx_status:load')
 AddEventHandler('esx_status:load', function(status)
 	--TriggerEvent('esx_status:loaded')
 	for i=1, #Status, 1 do
 		for j=1, #status, 1 do
-			if Status[i].name == status[j].name then
+			if(status[j].name=="armour") then
+				armour=status[j].value
+			elseif(status[j].name=="health")then
+				health=status[j].value
+			elseif Status[i].name == status[j].name then
 				Status[i].set(status[j].val)
 			end
 		end
@@ -73,6 +79,19 @@ AddEventHandler('esx_status:load', function(status)
 			Citizen.Wait(Config.TickTime)
 		end
 	end)
+end)
+
+local first = true
+AddEventHandler('skinchanger:modelLoaded',function()
+	if(first==true)then
+		if(health~=nil and armour~=nil)then
+			if health==100 then health=200 end
+			if health==0 then health=100 end
+			SetEntityHealth(PlayerPedId(),health)
+			SetPedArmour(PlayerPedId(),armour)
+			first=false
+		end
+	end
 end)
 
 RegisterNetEvent('esx_status:set')

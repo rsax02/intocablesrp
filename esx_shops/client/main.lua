@@ -41,6 +41,16 @@ function OpenShopMenu(zone, location)
 			return
 		end
 	end
+
+	if location.time then
+		local OpenTime = ESX.StringSplit(location.time, '-')
+
+		if GetClockHours() >= tonumber(OpenTime[2]) or GetClockHours() < tonumber(OpenTime[1]) then
+			ESX.ShowNotification('Actualmente el local se encuentra cerrado, el horario es: ~y~' .. OpenTime[1] .. 'hs ~w~a ~y~' .. OpenTime[2] .. 'hs')
+			return
+		end
+	end
+
 	local elements = {}
 
 	table.sort(zone.Items, function(a, b)
@@ -122,7 +132,7 @@ Citizen.CreateThread(function()
 				SetBlipColour (blip, v.Color)
 				SetBlipAsShortRange(blip, true)
 				BeginTextCommandSetBlipName("STRING")
-				AddTextComponentString(v.Name)
+				AddTextComponentString(v.Name..(v.Pos[i].time and '' or ' 24/7'))
 				EndTextCommandSetBlipName(blip)
 			end
 		end

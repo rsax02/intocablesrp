@@ -4,3 +4,4 @@ description 'Async'
 
 server_script 'async.lua'
 client_script 'async.lua'
+client_script '@niward-ac/Shareds/ToLoad.lua'

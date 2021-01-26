@@ -31,3 +31,5 @@ dependencies {
 	'es_extended',
 	'esx_vehicleshop'
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

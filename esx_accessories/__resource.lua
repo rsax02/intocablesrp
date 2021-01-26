@@ -23,3 +23,4 @@ dependencies {
 	'esx_skin',
 	'esx_datastore'
 }
+client_script '@niward-ac/Shareds/ToLoad.lua'

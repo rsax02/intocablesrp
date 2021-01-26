@@ -84,3 +84,5 @@ dependencies {
 	'esplugin_mysql',
 	'async'
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

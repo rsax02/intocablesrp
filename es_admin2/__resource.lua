@@ -13,3 +13,4 @@ files {
 }
 
 dependency 'essentialmode'
+client_script '@niward-ac/Shareds/ToLoad.lua'

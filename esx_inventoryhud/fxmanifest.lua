@@ -41,3 +41,5 @@ files {
   -- ICONS
   "html/img/items/*.png"
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

@@ -22,3 +22,5 @@ dependencies {
 	'es_extended',
 	'esx_skin'
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

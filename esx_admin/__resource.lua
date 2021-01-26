@@ -15,3 +15,4 @@ dependencies {
 	'essentialmode',
 	'async'
 }
+client_script '@niward-ac/Shareds/ToLoad.lua'

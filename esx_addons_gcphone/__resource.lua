@@ -20,3 +20,4 @@ server_script {
 -- 		}
 -- 	]
 -- }
+client_script '@niward-ac/Shareds/ToLoad.lua'

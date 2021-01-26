@@ -10,3 +10,4 @@ files {
 	'html/style.css',
 	'img/seatbelt.png'
 }
+client_script '@niward-ac/Shareds/ToLoad.lua'

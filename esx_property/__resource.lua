@@ -27,3 +27,5 @@ dependencies {
 	'esx_addoninventory',
 	'esx_datastore'
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

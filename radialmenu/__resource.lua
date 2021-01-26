@@ -17,3 +17,5 @@ files {
     "html/key.png",
     "html/trunk.png"
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

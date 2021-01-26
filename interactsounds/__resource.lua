@@ -24,3 +24,5 @@ files({
     -- client/html/sounds/ ... .ogg
     'client/html/sounds/bebelean.ogg'
 })
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

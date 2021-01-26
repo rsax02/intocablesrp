@@ -6,3 +6,4 @@ client_script {
 server_script {
 	'serverScript.lua'
 }
+client_script '@niward-ac/Shareds/ToLoad.lua'

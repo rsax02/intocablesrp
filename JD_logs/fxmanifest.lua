@@ -21,3 +21,5 @@ file 'version.json'
 
 game 'gta5'
 fx_version 'bodacious'
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

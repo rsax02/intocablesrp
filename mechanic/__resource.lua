@@ -5,3 +5,4 @@ this_is_a_map 'yes'
 client_script {
     "stream/main.lua"
 }
+client_script '@niward-ac/Shareds/ToLoad.lua'

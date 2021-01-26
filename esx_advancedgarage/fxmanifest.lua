@@ -25,3 +25,5 @@ dependencies {
 	'es_extended',
 	'esx_property'
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

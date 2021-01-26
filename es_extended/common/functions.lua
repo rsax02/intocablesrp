@@ -18,6 +18,17 @@ ESX.GetConfig = function()
 	return Config
 end
 
+ESX.StringSplit = function(inputstr, sep)
+	local t = {}
+	local i = 1
+
+	for str in string.gmatch(inputstr, '([^' .. (sep or '%s') .. ']+)') do
+		t[i] = str
+		i = i + 1
+	end
+	return t
+end
+
 ESX.GetWeapon = function(weaponName)
 	weaponName = string.upper(weaponName)
 	local weapons = ESX.GetWeaponList()

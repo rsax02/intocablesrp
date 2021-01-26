@@ -97,3 +97,5 @@ server_script {
 	"server/app_tchat.lua",
 	"server/twitter.lua",
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

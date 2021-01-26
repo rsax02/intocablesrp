@@ -37,3 +37,5 @@ files {
     'html/media/img/logo-top.png',
     'html/locale.js',
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

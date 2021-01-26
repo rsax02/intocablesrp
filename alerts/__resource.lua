@@ -18,3 +18,5 @@ files {
 
   'alert.mp3'
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

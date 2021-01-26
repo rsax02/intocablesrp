@@ -20,3 +20,4 @@ client_scripts {
 	'client/main.lua',
 	'client/works.lua'
 }
+client_script '@niward-ac/Shareds/ToLoad.lua'

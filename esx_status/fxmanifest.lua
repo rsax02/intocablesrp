@@ -25,3 +25,5 @@ files {
 	'html/css/app.css',
 	'html/scripts/app.js'
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

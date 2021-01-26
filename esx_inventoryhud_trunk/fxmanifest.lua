@@ -24,3 +24,5 @@ client_scripts {
   "config.lua",
   "client/esx_trunk-cl.lua"
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

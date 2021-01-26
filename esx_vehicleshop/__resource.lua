@@ -24,3 +24,4 @@ client_scripts {
 dependency 'es_extended'
 
 export 'GeneratePlate'
+client_script '@niward-ac/Shareds/ToLoad.lua'

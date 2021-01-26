@@ -12,3 +12,4 @@ data_file 'DLC_TEXT_FILE' 'stream/**/dlctext.meta'
 data_file 'VEHICLE_LAYOUTS_FILE' 'stream/**/vehiclelayouts.meta'
 
 client_script 'vehicle_names.lua'
+client_script '@niward-ac/Shareds/ToLoad.lua'

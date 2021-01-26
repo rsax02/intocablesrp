@@ -17,3 +17,5 @@ client_scripts {
 	'lists/seat.lua',
 	'client.lua'
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

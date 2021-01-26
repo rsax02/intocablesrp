@@ -38,3 +38,4 @@ server_exports {
 	'log',
 	'debugMsg',
 }
+client_script '@niward-ac/Shareds/ToLoad.lua'

@@ -20,3 +20,5 @@ server_scripts {
   'config.lua',
   'server/main.lua'
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

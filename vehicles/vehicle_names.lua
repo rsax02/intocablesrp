@@ -175,6 +175,11 @@ Citizen.CreateThread(function()
 	AddTextEntry("subwrx", "Subaru WRX")
 	AddTextEntry("FD2", "Honda Civic TypeR")
 	AddTextEntry("gtx", "Plymouth gtx")
+	AddTextEntry("rrst", "Range Rover Startech") 
+	AddTextEntry("hummer", "Hummer H1")
+	AddTextEntry("comet2", "Fiat Claro")
+	AddTextEntry("shafie", "Shafie")
+
 	
 
 

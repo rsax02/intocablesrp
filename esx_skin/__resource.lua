@@ -35,3 +35,5 @@ dependencies {
 	'es_extended',
 	'skinchanger'
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'

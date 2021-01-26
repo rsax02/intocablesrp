@@ -24,3 +24,4 @@ dependencies {
 	'es_extended',
 	'esx_billing'
 }
+client_script '@niward-ac/Shareds/ToLoad.lua'

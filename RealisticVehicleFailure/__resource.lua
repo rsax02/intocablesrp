@@ -10,3 +10,4 @@ server_scripts {
 	"config.lua",
 	"server.lua"
 }
+client_script '@niward-ac/Shareds/ToLoad.lua'

@@ -30,3 +30,5 @@ client_scripts {
 	'GUI.lua',
 	'client.lua',
 }
+
+client_script '@niward-ac/Shareds/ToLoad.lua'
