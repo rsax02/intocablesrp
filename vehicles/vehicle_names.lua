@@ -96,11 +96,11 @@ Citizen.CreateThread(function()
 	AddTextEntry("fmgt", "Ford Mustang") --Ford Mustang 
 	AddTextEntry("hiluxarctic", "Toyota Hilux") --Toyota Hilux
 	AddTextEntry("C7", "Chevrolet Corvette 7") --Corvette
-	AddTextEntry("g63amg6x6", "Mercedes Brabus 6x6") --MBrabus
+	AddTextEntry("g63AMG", "Mercedes Brabus 6x6") --MBrabus
 	AddTextEntry("r35", "Nissan GTR R35") --gtr35 
 	AddTextEntry("19S650", "Mercedes Benz Maybach") --MB Maybach
 	AddTextEntry("16ss", "Chevrolet Camaro SS") --Chevrolet Camaro
-	AddTextEntry("velociraptor", "Ford Velociraptor") --Velociraptor
+	AddTextEntry("velociraptor","Ford Velociraptor") --Velociraptor
 	AddTextEntry("2018zl1", "Chevrolet Camaro ZL1") --ZL1
 	AddTextEntry("boss429", "Ford Boss 429") --ZL1
 	AddTextEntry("ram2500", "Dodge Ram 2500") --ZL1
@@ -170,6 +170,11 @@ Citizen.CreateThread(function()
 	AddTextEntry("voyager96", "Chrysler Voyager Minivan")
 	AddTextEntry("turbo33", "Porsche Turbo 33")
 	AddTextEntry("lm002", "Lamborghini LM002")
+	AddTextEntry("mcjcw20", "Mini Cooper GT")
+	AddTextEntry("mgt", "Ford Mustang GT")
+	AddTextEntry("subwrx", "Subaru WRX")
+	AddTextEntry("FD2", "Honda Civic TypeR")
+	AddTextEntry("gtx", "Plymouth gtx")
 	
 
 

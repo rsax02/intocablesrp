@@ -492,6 +492,9 @@ function OpenDonationMenu()
 										Performance(data.current)
 									elseif data.current.value=="phone" then
 										Phone(data.current)
+									elseif data.current.value=="money" then
+										ESX.TriggerServerCallback('esx_donations:confirmBuy', function()end,data.current)
+										ESX.UI.Menu.CloseAll()	
 									elseif data.current.value=="plate" then
 										Plate(data.current)
 									elseif data.current.value=="identity" then
