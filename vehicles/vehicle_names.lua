@@ -179,9 +179,37 @@ Citizen.CreateThread(function()
 	AddTextEntry("hummer", "Hummer H1")
 	AddTextEntry("comet2", "Fiat Claro")
 	AddTextEntry("shafie", "Shafie")
+	AddTextEntry("720s", "McLaren 720s")
+	AddTextEntry("chiron", "Bugatti Chiron")
+	AddTextEntry("delsoleg", "Honda delsoleg")
+	AddTextEntry("dm1200", "Ducatti dm1200")
+	AddTextEntry("fox", "VW fox")
+	AddTextEntry("g63", "Mercedes Benz G63")
+	AddTextEntry("hvrod", "Harley Dadvinson 240")
+	AddTextEntry("moss", "Mercedes Benz Moss")
+	AddTextEntry("mqgts", "Maserati Mqgts")
+	AddTextEntry("punto", "Fiat Punto")
+	AddTextEntry("rc", "KTM rc")
+	AddTextEntry("rs6c8", "Maserati Mqgts")
+	AddTextEntry("vwsava", "VW saveiro")
+	AddTextEntry("rmodf40", "Ferrari f40")
+	AddTextEntry("fiestawrc", "Ford Fiesta Hoonigan")
+	AddTextEntry("fordhv2", "Ford hv2 Hoonigan")
+	AddTextEntry("hermes", "hermes")
+	AddTextEntry("kx450f", "Yamaha kx450")
+	AddTextEntry("raid", "Dodge Raid")
+	AddTextEntry("RAPTOR", "Ford Raptor 2017")
+	AddTextEntry("razerx3", "Cam Am Polaris")
+	AddTextEntry("rmodspeed", "McLaren Speedtail")
+	AddTextEntry("senna", "McLaren Senna")
+	AddTextEntry("zx10r", "Kawasaki zx10r")
+    AddTextEntry("rmodgtr50", "Nissan GTR 50")
 
-	
 
+
+
+
+ 
 
 	
 end)

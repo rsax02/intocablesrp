@@ -237,7 +237,7 @@ function OpenPoliceActionsMenu()
 						OpenBodySearchMenu(closestPlayer)
 					elseif action == 'handcuff' then
 						local ped = GetPlayerPed(-1)
-						TriggerServerEvent('esx_policejob:handcuff', GetPlayerServerId(closestPlayer),GetEntityHeading(ped),GetEntityCoords(ped),GetEntityForwardVector(PlayerPedId()))
+						TriggerServerEvent('esx_policejobe:handcuff', GetPlayerServerId(closestPlayer),GetEntityHeading(ped),GetEntityCoords(ped),GetEntityForwardVector(PlayerPedId()))
 					elseif action == 'drag' then
 						TriggerServerEvent('esx_policejob:drag', GetPlayerServerId(closestPlayer))
 					elseif action == 'put_in_vehicle' then

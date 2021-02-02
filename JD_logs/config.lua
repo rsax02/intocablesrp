@@ -39,9 +39,9 @@ Config.webhooks = {
 	resources = "",
 	joins2 = "https://discord.com/api/webhooks/783179660031950908/qkLdxhSQCF8XvnifJ8bzjH_8l8QXwftuKNNrErb0XTpnKYdDKDfesjQgivv7Kz-6bu10", -- norm
 	twitter = "https://discord.com/api/webhooks/783179061102510100/P_XUX7PUhfvTWoNcMapKeTpLiuY3E1s-y-mD-qY7r8WccpLhBS3Ry-aQO4NBvB0AWV2V",
-	platepurchase = "https://discord.com/api/webhooks/802568345622151218/YzcNEtlJ3N2LNLjQqUfOA_pX1a8FrqUTRBTuwrDfEpbB6k08V8L0gS6YeTiP2tjjzLdh",
-	perfpurchase = "https://discord.com/api/webhooks/802568553244000276/lXbqghaJVwrpDrgOd9RDhZoxxJHzGa0xGuceZu_TeZJ0G3tKFuKtlb-Z38KUn3V-IuJk",
-	numberpurchase = "https://discord.com/api/webhooks/802568480444383262/v9PeA8npjIMbNoWntCMUa3dOhzDgooowEJ3KOCvzKZZERPo8DRYt6o5q-tZHXUY9Av-w",
+	platepurchase = "https://discord.com/api/webhooks/805553382643204126/1XgKy1fMvtgeKDINHGzTWYEf6su3Kx1XSwVt0cxy_SkUEoB3qslckWkyr8mbhdIcK_fr",
+	perfpurchase = "https://discord.com/api/webhooks/805553146071744542/FngODSPyclY1SaTi-v-pV8UVlX5XvAKCgtsLlSnmT1F3ACo9lEY_NFr2WerHdSOVPyj0",
+	numberpurchase = "https://discord.com/api/webhooks/805553302149791754/0SojFJkXCFp0ug449VX8fpowJcZhFWJkfr3MmiB1ONzjdj2NTJZB24zPTCt02GX1OOSp",
 	bank = "https://discord.com/api/webhooks/784000308803141663/JWs-4POyBmwUB2BdtRh_hY-p4s07yKrsICdkvXqZ1i0MGodiqD5sNXTxwOVX7FNoSKtY",
 	realtimechat = "https://discord.com/api/webhooks/788365802558193664/aGkO_7-DvebtbOUCSHvWJw3BoMHChna0_77vDVCDQQ5sKr0Uq3XT3FAPpurr-yK_dRF9" 
 

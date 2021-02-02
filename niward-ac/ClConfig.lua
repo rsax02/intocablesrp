@@ -18,7 +18,7 @@ ClConfig.AntiVehicleRainbow     = false -- Si el vehiculo cambia de color más d
 ClConfig.AntiMenyoo             = false -- AntiMenyoo injections
 
 ClConfig.AntiGiveWeapon         = true -- Si detecta que un usuario esta intentando givear un arma, lo banea.
-ClConfig.AntiClearPedTaskEvent  = true -- Si detecta que un usuario expulsa de un vehiculo (o lo para) de forma inmediata lo banea.
+ClConfig.AntiClearPedTaskEvent  = false -- Si detecta que un usuario expulsa de un vehiculo (o lo para) de forma inmediata lo banea.
 
 ClConfig.QuantityResources      = true -- Verifica cada 30s la cantidad de resources que tiene.
 ClConfig.QuantityResourcesBan   = true -- Si tiene mas resources que los que detecta el servidor lo banea.

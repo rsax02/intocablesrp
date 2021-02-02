@@ -500,39 +500,8 @@ AddEventHandler('trew_hud_ui:setCarSignalLights', function(status)
 
 	end
 
-	TriggerServerEvent('trew_hud_ui:syncCarLights', status)
-
 	SetVehicleIndicatorLights(driver, 0, leftLight)
 	SetVehicleIndicatorLights(driver, 1, rightLight)
-end)
-
-RegisterNetEvent('trew_hud_ui:syncCarLights')
-AddEventHandler('trew_hud_ui:syncCarLights', function(driver, status)
-
-	if GetPlayerFromServerId(driver) ~= PlayerId() then
-		local driver = GetVehiclePedIsIn(GetPlayerPed(GetPlayerFromServerId(driver)), false)
-
-		if status == 'left' then
-			leftLight = false
-			rightLight = true
-
-		elseif status == 'right' then
-			leftLight = true
-			rightLight = false
-
-		elseif status == 'both' then
-			leftLight = true
-			rightLight = true
-
-		else
-			leftLight = false
-			rightLight = false
-		end
-
-		SetVehicleIndicatorLights(driver, 0, leftLight)
-		SetVehicleIndicatorLights(driver, 1, rightLight)
-
-	end
 end)
 
 function trewDate()
@@ -619,6 +588,7 @@ end
 
 --acaestaba
 RegisterCommand('toggleui', function()
+	TriggerEvent('es_extended:hideIds')
 	if not toggleui then
 		SendNUIMessage({ action = 'element', task = 'disable', value = 'job' })
 		SendNUIMessage({ action = 'element', task = 'disable', value = 'society' })

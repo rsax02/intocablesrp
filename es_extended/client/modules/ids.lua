@@ -1,5 +1,6 @@
 local disPlayerNames = 13
 local playerDistances,playerPeds = {},{}
+local hide = false
 
 local function DrawText3D(x,y,z, text, r,g,b) 
     local onScreen,_x,_y=World3dToScreen2d(x,y,z)
@@ -32,6 +33,11 @@ end
 
 local ped,pedId, activePlayers
 
+RegisterNetEvent('es_extended:hideIds')
+AddEventHandler('es_extended:hideIds',function()
+    hide=not hide
+end)
+
 Citizen.CreateThread(function()
     while true do
         ped=PlayerPedId()
@@ -56,19 +62,21 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(5)
         sleep = true
-        for _,id in ipairs(activePlayers) do
-            local idPed = playerPeds[id]
-            if v~=pedId and IsEntityVisible(idPed) then
-                if playerDistances[id] then
-                    if (playerDistances[id] < disPlayerNames and HasEntityClearLosToEntity(ped, idPed, 17)) then
-                        x2, y2, z2 = table.unpack(GetEntityCoords(idPed, true))
-                        if NetworkIsPlayerTalking(id) then
-                            DrawText3D(x2, y2, z2+1, GetPlayerServerId(id), 247,124,24)
-                            --DrawMarker(27, x2, y2, z2-0.97, 0, 0, 0, 0, 0, 0, 1.001, 1.0001, 0.5001, 173, 216, 230, 100, 0, 0, 0, 0)
-                        else
-                            DrawText3D(x2, y2, z2+1, GetPlayerServerId(id), 255,255,255)
+        if(not hide) then
+            for _,id in ipairs(activePlayers) do
+                local idPed = playerPeds[id]
+                if v~=pedId and IsEntityVisible(idPed) then
+                    if playerDistances[id] then
+                        if (playerDistances[id] < disPlayerNames and HasEntityClearLosToEntity(ped, idPed, 17)) then
+                            x2, y2, z2 = table.unpack(GetEntityCoords(idPed, true))
+                            if NetworkIsPlayerTalking(id) then
+                                DrawText3D(x2, y2, z2+1, GetPlayerServerId(id), 247,124,24)
+                                --DrawMarker(27, x2, y2, z2-0.97, 0, 0, 0, 0, 0, 0, 1.001, 1.0001, 0.5001, 173, 216, 230, 100, 0, 0, 0, 0)
+                            else
+                                DrawText3D(x2, y2, z2+1, GetPlayerServerId(id), 255,255,255)
+                            end
+                            sleep=false
                         end
-                        sleep=false
                     end
                 end
             end

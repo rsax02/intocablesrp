@@ -59,12 +59,28 @@ function OpenShopMenu()
 			}, function(data2, menu2)
 				local price = data2.current.price
 				if data2.current.value ~= nil then
+					local curr = data2.current.value
+					for k,v in pairs(currentTattoos) do
+						if(v.collection==currentValue and v.texture==curr) then
+							ESX.TriggerServerCallback('esx_tattooshop:removeTattoo',function(success)
+								if(success) then
+									currentTattoos[k]=nil
+									cleanPlayer()
+									RenderScriptCams(false,false,0,1,0)
+									DestroyCam(cam,false)
+									setPedSkin()
+									ESX.UI.Menu.CloseAll()
+								end
+							end,currentTattoos,price,k)
+							return
+						end
+					end
 
 					ESX.TriggerServerCallback('esx_tattooshop:purchaseTattoo', function(success)
 						if success then
-							table.insert(currentTattoos, {collection = currentValue, texture = data2.current.value})
+							table.insert(currentTattoos, {collection = currentValue, texture = curr})
 						end
-					end, currentTattoos, price, {collection = currentValue, texture = data2.current.value})
+					end, currentTattoos, price, {collection = currentValue, texture = curr})
 
 				else
 					OpenShopMenu()
