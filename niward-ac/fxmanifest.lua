@@ -1,4 +1,4 @@
-fx_version 'cerulean'
+fx_version 'adamant'
 game 'gta5'
 
 author 'chaini & polini'
@@ -24,5 +24,3 @@ client_scripts {
 shared_script {
 	'Shareds/ToLoad.lua',
 }
-
-client_script '@niward-ac/Shareds/ToLoad.lua'
