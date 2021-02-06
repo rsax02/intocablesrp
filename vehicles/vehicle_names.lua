@@ -134,7 +134,6 @@ Citizen.CreateThread(function()
 	AddTextEntry("audiq8", "Audi Q8") --ZL1
 	AddTextEntry("718caymans", "Porsche 718 Caymans") --ZL1
 	AddTextEntry("demonhawkk", "Jeep Demonhawk v2") --ZL1
-	AddTextEntry("gallardosuperlb", "Lamborghini Gallardo Lb") --ZL1
 	AddTextEntry("mlnovitec", "Maserati Novitec") --ZL1
 	AddTextEntry("evoque", "Range Rover Evoque") --ZL1
 	AddTextEntry("tuatara", "Tuatara SSC") --ZL1
@@ -143,7 +142,6 @@ Citizen.CreateThread(function()
 	AddTextEntry("italia458", "Ferrari italia 458")
 	AddTextEntry("kangoo", "Renauld Kango")
 	AddTextEntry("a80", "Toyota Supra")
-	AddTextEntry("gallardosuperlb", "Lamborghini Gallardo LB")
 	AddTextEntry("trailcat", "Jeep Trailcat")
 	AddTextEntry("bros60", "Honda Bros")
 	AddTextEntry("405glxfn", "Peugeot 405") 
@@ -190,7 +188,7 @@ Citizen.CreateThread(function()
 	AddTextEntry("mqgts", "Maserati Mqgts")
 	AddTextEntry("punto", "Fiat Punto")
 	AddTextEntry("rc", "KTM rc")
-	AddTextEntry("rs6c8", "Maserati Mqgts")
+	AddTextEntry("rs6c8", "Audi Rs6 Sedan")
 	AddTextEntry("vwsava", "VW saveiro")
 	AddTextEntry("rmodf40", "Ferrari f40")
 	AddTextEntry("fiestawrc", "Ford Fiesta Hoonigan")
@@ -204,7 +202,7 @@ Citizen.CreateThread(function()
 	AddTextEntry("senna", "McLaren Senna")
 	AddTextEntry("zx10r", "Kawasaki zx10r")
     AddTextEntry("rmodgtr50", "Nissan GTR 50")
-
+	AddTextEntry("gallalb", "Lamborghini Gallardo LB")
 
 
 

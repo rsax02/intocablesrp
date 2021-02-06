@@ -34,15 +34,15 @@ Config.webhooks = {
 	chat = "https://discord.com/api/webhooks/783179061102510100/P_XUX7PUhfvTWoNcMapKeTpLiuY3E1s-y-mD-qY7r8WccpLhBS3Ry-aQO4NBvB0AWV2V",
 	joins = "https://discord.com/api/webhooks/783180184441978890/N8lSP44wlnEhUDKN18Pp4r2URtSzjpzP_vgQimW-IWJIfF2zQZYqekpLFSIrva_MD5GG",
 	leaving = "https://discord.com/api/webhooks/783180067345793058/kMlEXXKWJWvotO020niesPxC71F8c7rPNOp-JWzUQYyw067KskGHx0LMjItCvwm4IL0O",
-	deaths = "https://discord.com/api/webhooks/803310105520635954/hKM7o31nR8VGORg3c1wjg1zq6e8qO-i2NmUZ8kXUzuEbD1gpapuezXI0CqyrWLxj1VVG",
+	deaths = "https://discord.com/api/webhooks/807695829707390976/S-kJsukjpxIB6Q4ibpdKGvorie8DmhWSLgB7m1nBqPF9xGOfx1r6Clvim2USefss1xRg",
 	shooting = "",
 	resources = "",
 	joins2 = "https://discord.com/api/webhooks/783179660031950908/qkLdxhSQCF8XvnifJ8bzjH_8l8QXwftuKNNrErb0XTpnKYdDKDfesjQgivv7Kz-6bu10", -- norm
 	twitter = "https://discord.com/api/webhooks/783179061102510100/P_XUX7PUhfvTWoNcMapKeTpLiuY3E1s-y-mD-qY7r8WccpLhBS3Ry-aQO4NBvB0AWV2V",
-	platepurchase = "https://discord.com/api/webhooks/806391303884898304/Sfey1iHnvmxNO4cfHjtxk0rTIjzqyi22v3x3XClg5MO1xFcHKlj7mpCElHAXFeGXViDx",
-	perfpurchase = "https://discord.com/api/webhooks/806348502934355969/d_DbLX2FbAI4WEX8kToWl-Ryi0DZVN3kjNCSwwAQkcFrq535ltoSbrJ60VhJybI6cS_u",
-	numberpurchase = "https://discord.com/api/webhooks/806348744206975036/0vWMOg484yapdLCetZwMJKlsTsTIRW41yA7EJfMjOY3JmhW5m2puVtxdfr0q0zFo9134",
-	bank = "https://discord.com/api/webhooks/806369295332409344/oWb2Qt_inYuVOkmQ69JgccDcnYlfKnngReuZK_iqEMjfgFssJx3GWn0sjyv0HptKwxHF",
+	platepurchase = "https://discord.com/api/webhooks/807695701164818482/lQ5INWisxrPTERxnsH1XfmaFm0QLbqOuXwSb-py61zlbfu7retwJA61xhnPVRGg2ruBo",
+	perfpurchase = "https://discord.com/api/webhooks/807695517894443018/ePRVVemE0rHOiZmsL4FFG3OEIKs3CByC99sSe8AWqr3cP07cnNP7OQxDVxHgvOE_RXfk",
+	numberpurchase = "https://discord.com/api/webhooks/807695610781892688/ts7hUygXaFmME9eD_ivXlGmCdZsC_m2koAuqbnYtkWPXKM3Vy8EpuySnGbMPeBMYKMgl",
+	bank = "https://discord.com/api/webhooks/807694791881523201/bh5uIpCiUViwtiyAIK3YjWC7MyPcI-2R4PIHNn3xz1nobIfiqRAzJPJ9hDRUC-z7iFiJ",
 	realtimechat = "https://discord.com/api/webhooks/788365802558193664/aGkO_7-DvebtbOUCSHvWJw3BoMHChna0_77vDVCDQQ5sKr0Uq3XT3FAPpurr-yK_dRF9" 
 
   -- How you add more logs is explained on https://docs.jokedevil.com/JD_logs

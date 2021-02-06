@@ -129,16 +129,14 @@ end
 
 function OpenArmoryMenu(station)
 	local elements = {
-		{label = _U('buy_weapons'), value = 'buy_weapons'},
 		--{label = _U('get_weapon'),     value = 'get_weapon'},
 		{label = _U('put_weapon'),     value = 'put_weapon'},
 		--{label = _U('remove_object'),  value = 'get_stock'},
 		{label = _U('deposit_object'), value = 'put_stock'},
 	}
 	if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' and ESX.PlayerData.job.grade>1 then
-	table.insert(elements,
-	{label = _U('get_weapon'),     value = 'get_weapon'}
-	)
+	table.insert(elements,{label = _U('buy_weapons'), value = 'buy_weapons'})
+	table.insert(elements,{label = _U('get_weapon'),     value = 'get_weapon'})
 	table.insert(elements,{label = _U('remove_object'),  value = 'get_stock'})
 	end
 
