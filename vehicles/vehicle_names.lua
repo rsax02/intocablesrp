@@ -203,6 +203,7 @@ Citizen.CreateThread(function()
 	AddTextEntry("zx10r", "Kawasaki zx10r")
     AddTextEntry("rmodgtr50", "Nissan GTR 50")
 	AddTextEntry("gallalb", "Lamborghini Gallardo LB")
+	AddTextEntry("baja", "Volkswagen Beetle")
 
 
 

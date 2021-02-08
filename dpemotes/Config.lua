@@ -47,6 +47,7 @@ Config.Languages = {
         ['emotes'] = "🤾 Animaciones",
         ['danceemotes'] = "🕺 Bailes",
         ['propemotes'] = "📦 Objetos",
+        ['hotemotes'] = '😈 Animaciones +18',
         ['keybindemotes'] = "🌟 Favorita",
         ['keybindinfo'] = "Selecciona una animacion como su favorita.",
         ['rkeybind'] = "Reiniciar favorito",
