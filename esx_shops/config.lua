@@ -186,9 +186,9 @@ Config.Zones = {
 		Color=27,
 		Name="Las Cucardas",
 		Items = {
-			{name="beer", label="Cerveza",type="money",amount=20,level=1},
-			{name="oldtime", label="OldTimes",type="money",amount=30,level=1},
-			{name="russkaya", label="russkaya",type="money",amount=30,level=1},
+			{name="beer", label="Cerveza",type="money",amount=20,level=1,nightclub=true},
+			{name="oldtime", label="OldTimes",type="money",amount=30,level=1,nightclub=true},
+			{name="russkaya", label="russkaya",type="money",amount=30,level=1,nightclub=true},
 		},
 		Jobs=nil,
 		Pos = {

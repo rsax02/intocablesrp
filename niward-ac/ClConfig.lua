@@ -188,7 +188,7 @@ ClConfig.WeaponBlacklisted      = { -- Lista de armas (recomendado: poner false 
 }
 
 ClConfig.AntiPedBlacklisted     = true -- Verifica constantemente por todo el servidor si existe una entidad con ese ped, si existe lo borra y le saca las armas.
-ClConfig.AntiPedBlacklistedList = { "a_m_y_mexthug_01", "a_c_cat_01", "a_c_boar", "a_c_sharkhammer", "a_c_coyote", "a_c_chimp", "a_c_cow", "a_c_deer", "a_c_dolphin", "a_c_fish", "a_c_hen", "a_c_humpback", "a_c_killerwhale", "a_c_mtlion", "a_c_rabbit_01", "a_c_sharktiger" }
+ClConfig.AntiPedBlacklistedList = { "g_m_y_lost_01","g_m_y_lost_02","g_m_y_lost_03","a_m_y_mexthug_01", "a_c_cat_01", "a_c_boar", "a_c_sharkhammer", "a_c_coyote", "a_c_chimp", "a_c_cow", "a_c_deer", "a_c_dolphin", "a_c_fish", "a_c_hen", "a_c_humpback", "a_c_killerwhale", "a_c_mtlion", "a_c_rabbit_01", "a_c_sharktiger" }
 
 ClConfig.AntiSelfPedBlacklist   = true -- Verifica si el usuario tiene el ped de la lista de abajo, si lo tiene lo banea.
 ClConfig.AntiSelfPedList        = { "a_m_y_mexthug_01", "a_c_cat_01", "a_c_boar", "a_c_sharkhammer", "a_c_coyote", "a_c_chimp", "a_c_cow", "a_c_deer", "a_c_dolphin", "a_c_fish", "a_c_hen", "a_c_humpback", "a_c_killerwhale", "a_c_mtlion", "a_c_rabbit_01", "a_c_sharktiger" }

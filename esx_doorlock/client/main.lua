@@ -31,7 +31,7 @@ Citizen.CreateThread(function()
 		local playerCoords = GetEntityCoords(PlayerPedId())
 
 		for k,v in ipairs(Config.DoorList) do
-			v.isAuthorized = isAuthorized()
+			v.isAuthorized = isAuthorized(v.authorizedJobs)
 
 			if v.doors then
 				for k2,v2 in ipairs(v.doors) do
@@ -68,7 +68,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(10)
+		Citizen.Wait(8)
 		local letSleep = true
 
 		for k,v in ipairs(Config.DoorList) do
@@ -109,10 +109,15 @@ Citizen.CreateThread(function()
 	end
 end)
 
-function isAuthorized()
+function isAuthorized(jobs)
 	if not ESX or not ESX.PlayerData.job then
 		return false
 	end
-	if ESX.PlayerData.job.name=="police" then return true end
+	local job = ESX.PlayerData.job.name
+	for k,v in pairs(jobs)do
+		if(job==v) then
+			return true
+		end
+	end
 	return false
 end

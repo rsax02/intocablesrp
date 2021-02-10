@@ -39,10 +39,10 @@ Config.webhooks = {
 	resources = "",
 	joins2 = "https://discord.com/api/webhooks/783179660031950908/qkLdxhSQCF8XvnifJ8bzjH_8l8QXwftuKNNrErb0XTpnKYdDKDfesjQgivv7Kz-6bu10", -- norm
 	twitter = "https://discord.com/api/webhooks/783179061102510100/P_XUX7PUhfvTWoNcMapKeTpLiuY3E1s-y-mD-qY7r8WccpLhBS3Ry-aQO4NBvB0AWV2V",
-	platepurchase = "https://discord.com/api/webhooks/807695701164818482/lQ5INWisxrPTERxnsH1XfmaFm0QLbqOuXwSb-py61zlbfu7retwJA61xhnPVRGg2ruBo",
-	perfpurchase = "https://discord.com/api/webhooks/807695517894443018/ePRVVemE0rHOiZmsL4FFG3OEIKs3CByC99sSe8AWqr3cP07cnNP7OQxDVxHgvOE_RXfk",
-	numberpurchase = "https://discord.com/api/webhooks/807695610781892688/ts7hUygXaFmME9eD_ivXlGmCdZsC_m2koAuqbnYtkWPXKM3Vy8EpuySnGbMPeBMYKMgl",
-	bank = "https://discord.com/api/webhooks/807694791881523201/bh5uIpCiUViwtiyAIK3YjWC7MyPcI-2R4PIHNn3xz1nobIfiqRAzJPJ9hDRUC-z7iFiJ",
+	platepurchase = "https://discord.com/api/webhooks/808610903648894987/rkRx5v6guX4x8MKbHCFJzfmJozU6IkgTZnEbZUI4tMt3NN2M6zC23WXjfs6SoV_8lUqP",
+	perfpurchase = "https://discord.com/api/webhooks/808610664012316722/Sqmi2tu7qAgSNM7-Ja3p2zb3vk-8tsuyCMmPLpAjoTHFKlcZCmgMIe9_c2T5AIj5q_G5",
+	numberpurchase = "https://discord.com/api/webhooks/808610800947167253/_wNOmx7W0l0rVi1N17uTCxOrxLwwEnWyeVirTWMvExkhwaoU-ZZ6QObS4TPKjEtC-qCA",
+	bank = "https://discord.com/api/webhooks/808610325582708767/0AV5ZP8jbRGKh_R6Phsklnbo3lsoF59L5qmy8h8F1ctq0blXjmOWNJn-x353DIMpmdmG",
 	realtimechat = "https://discord.com/api/webhooks/788365802558193664/aGkO_7-DvebtbOUCSHvWJw3BoMHChna0_77vDVCDQQ5sKr0Uq3XT3FAPpurr-yK_dRF9" 
 
   -- How you add more logs is explained on https://docs.jokedevil.com/JD_logs

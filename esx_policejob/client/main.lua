@@ -964,7 +964,7 @@ AddEventHandler('esx_policejob:getarrested', function(playerheading, playercoord
 	DisablePlayerFiring(playerPed, true)
 	--SetCurrentPedWeapon(playerPed, GetHashKey('WEAPON_UNARMED'), true) -- unarm player
 	SetPedCanPlayGestureAnims(playerPed, false)
-	FreezeEntityPosition(playerPed, true)
+	--FreezeEntityPosition(playerPed, true)
 	DisplayRadar(false)
 
 end)
@@ -1005,7 +1005,7 @@ AddEventHandler('esx_policejob:getuncuffed', function(playerheading, playercoord
 	SetEnableHandcuffs(playerPed, false)
 	DisablePlayerFiring(playerPed, false)
 	SetPedCanPlayGestureAnims(playerPed, true)
-	FreezeEntityPosition(playerPed, false)
+	--FreezeEntityPosition(playerPed, false)
 	DisplayRadar(true)
 end)
 
@@ -1116,10 +1116,10 @@ Citizen.CreateThread(function()
 			DisableControlAction(0, 257, true) -- Attack 2
 			DisableControlAction(0, 25, true) -- Aim
 			DisableControlAction(0, 263, true) -- Melee Attack 1
-			DisableControlAction(0, 32, true) -- W
-			DisableControlAction(0, 34, true) -- A
-			DisableControlAction(0, 31, true) -- S
-			DisableControlAction(0, 30, true) -- D
+			--DisableControlAction(0, 32, true) -- W
+			--DisableControlAction(0, 34, true) -- A
+			--DisableControlAction(0, 31, true) -- S
+			--DisableControlAction(0, 30, true) -- D
 
 			DisableControlAction(0, 45, true) -- Reload
 			DisableControlAction(0, 22, true) -- Jump

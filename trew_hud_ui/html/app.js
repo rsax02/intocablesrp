@@ -124,6 +124,20 @@ window.onload = function () {
 				voiceIdWithClasses.add(data.value);
 			},
 
+			setAlert: function(data){
+				var alert = document.getElementById('alertimg');
+				var imgs = {
+					0:"",
+					amarilla:"https://i.imgur.com/YDEI4LT.png",
+					azul:"https://i.imgur.com/Bm2CUIW.png",
+					naranja: "https://i.imgur.com/DWc3nSB.png",
+					roja:"https://i.imgur.com/DuUjiui.png",
+					verde:"https://i.imgur.com/f9MdoC8.png"
+				}
+				
+				alert.src=imgs[data.value];
+			},
+
 
 			createStatus: function(data) {
 

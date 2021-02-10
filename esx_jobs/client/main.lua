@@ -105,7 +105,7 @@ function OpenMenu()
 	end)
 end
 
-AddEventHandler('esx_jobs:action', function(job, zone)
+AddEventHandler('esx_jobs:action', function(job, zone,key)
 	menuIsShowed = true
 	if zone.Type == "cloakroom" then
 		OpenMenu()
@@ -117,12 +117,9 @@ AddEventHandler('esx_jobs:action', function(job, zone)
 		if IsPedInAnyVehicle(playerPed, false) then
 			ESX.ShowNotification(_U('foot_work'))
 		else
-			if GetGameTimer() > lastWork then
-				if not IsPedInAnyVehicle(PlayerPedId(),false) then
-					TriggerServerEvent('esx_jobs:startWork', zone.Item)
-					isworking=true
-					lastWork=GetGameTimer() + 3000
-				end
+			if not IsPedInAnyVehicle(PlayerPedId(),false) then
+				TriggerServerEvent('esx_jobs:startWork', key)
+				isworking=true
 			end
 		end
 	elseif zone.Type == "vehspawner" then
@@ -218,7 +215,7 @@ AddEventHandler('esx_jobs:action', function(job, zone)
 
 			hintToDisplay = "no hint to display"
 			hintIsShowed = false
-			TriggerServerEvent('esx_jobs:startWork', zone.Item)
+			TriggerServerEvent('esx_jobs:startWork', key)
 			isworking=true
 		end
 	end
@@ -451,7 +448,7 @@ Citizen.CreateThread(function()
 
 				if IsControlJustReleased(0, Keys['E']) and not menuIsShowed and isInMarker then
 					if onDuty or zone.Type == "cloakroom" then
-						TriggerEvent('esx_jobs:action', job, zone)
+						TriggerEvent('esx_jobs:action', job, zone, currentZone)
 					end
 				end
 

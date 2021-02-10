@@ -127,8 +127,11 @@ function OpenCoffreInventoryMenu(plate, max)
     ESX.TriggerServerCallback(
         "esx_inventoryhud_trunk:getInventoryV",
         function(inventory)
-            if not inventory then
+            if(inventory==nil) then
             opening=false
+            opened=false
+            currentVehicle=nil
+            TriggerEvent("inventoryClosed")
             return
             end
             text = _U("trunk_info", plate, (inventory.weight / 1000), (max / 1000))

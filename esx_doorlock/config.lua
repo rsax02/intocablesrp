@@ -3,6 +3,23 @@ Config.Locale = 'en'
 
 Config.DoorList = {
 
+	{
+		objHash = GetHashKey('prop_magenta_door'),
+		objCoords  = vector3(96.092, -1284.854, 29.438),
+		textCoords = vector3(95.392, -1284.854, 29.738),
+		authorizedJobs = {'nightclub'},
+		locked = true,
+		maxDistance = 5.0,
+	},
+
+	{
+		objHash = GetHashKey('prop_strip_door_01'),
+		objCoords  = vector3(127.955,-1298.503, 29.419),
+		textCoords = vector3(128.500, -1298.053, 29.719),
+		authorizedJobs = {'nightclub'},
+		locked = true,
+		maxDistance = 5.0,
+	},
 	--
 	-- Mission Row First Floor
 	--

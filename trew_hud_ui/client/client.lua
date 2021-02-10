@@ -442,6 +442,11 @@ Citizen.CreateThread(function()
 	end
 end)
 
+RegisterNetEvent('updateAlert')
+AddEventHandler('updateAlert',function(alert)
+	SendNUIMessage({action='setAlert',value=alert})
+end)
+
 AddEventHandler('esx:onPlayerSpawn', function()
 
 	SendNUIMessage({ action = 'ui', config = Config.ui })

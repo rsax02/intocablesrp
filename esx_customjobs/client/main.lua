@@ -1,5 +1,5 @@
 ESX = nil
-local ped, coords
+local ped, coords, job
 local PlayerData = {}
 local onDuty = false
 local truckerBlip, deliveryblip = nil, nil
@@ -21,18 +21,19 @@ Citizen.CreateThread(function()
 	end
 
     PlayerData = ESX.GetPlayerData()
-    refreshBlip()
+    refreshBlips()
 end)
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
     PlayerData = xPlayer
-    refreshBlip()
+    refreshBlips()
 end)
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
     PlayerData.job = job
+    ESX.PlayerData.job=job
     onDuty = false
     if(deliveryblip)then
     RemoveBlip(deliveryblip)
@@ -41,7 +42,7 @@ AddEventHandler('esx:setJob', function(job)
     currentDelivery = nil
     currentIndex=0
     deleteBlip()
-    refreshBlip()
+    refreshBlips()
 end)
 
 function deleteBlip()
@@ -52,17 +53,18 @@ function deleteBlip()
     truckerBlip = nil
 end
 
-function refreshBlip()
+function refreshBlips()
     if PlayerData ~= nil then
-        if PlayerData.job.name == "trucker" then
-            truckerBlip = AddBlipForCoord(Config.Blip.Pos.x, Config.Blip.Pos.y, Config.Blip.Pos.z)
-            SetBlipSprite(truckerBlip, Config.Blip.Id)
+        local job = PlayerData.job.name
+        if(job and (job == "trucker" or job=="delivery"))then
+            truckerBlip = AddBlipForCoord(Config.Jobs[job].Blip.Pos.x, Config.Jobs[job].Blip.Pos.y, Config.Jobs[job].Blip.Pos.z)
+            SetBlipSprite(truckerBlip, Config.Jobs[job].Blip.Id)
             SetBlipDisplay(truckerBlip, 4)
             SetBlipScale(truckerBlip, 1.0)
-            SetBlipColour(truckerBlip, Config.Blip.Colour)
+            SetBlipColour(truckerBlip, Config.Jobs[job].Blip.Colour)
             SetBlipAsShortRange(truckerBlip, true)
             BeginTextCommandSetBlipName("STRING")
-            AddTextComponentString(Config.Blip.Title)
+            AddTextComponentString(Config.Jobs[job].Blip.Title)
             EndTextCommandSetBlipName(truckerBlip)
         end
     end
@@ -115,7 +117,7 @@ function OpenCloakRoom()
     end)
 end
 
-function getDeliveries()
+function getDeliveries(work)
     if(currentIndex==0)then
         local inVehicle = IsPedInAnyVehicle(ped,false)
         local vehicle = GetVehiclePedIsIn(ped,false)
@@ -128,14 +130,21 @@ function getDeliveries()
             end
         end
 
-        local cars = {"benson3"}
+        local cars,car = Config.Jobs[work].Vehicles
+        if(#cars>1) then
+            car=cars[math.random(1,#cars)].hash
+        else 
+            car=cars[1].hash
+        end
+        
 
         if (not IsPedInAnyVehicle(ped, false)) then
-            if ESX.Game.IsSpawnPointClear(Config.VehicleSpawnPoint.Pos, 5.0) then
-                ESX.Game.SpawnVehicle(cars[1], Config.VehicleSpawnPoint.Pos, 180.53, function(entity)
+            if ESX.Game.IsSpawnPointClear(Config.Jobs[work].VehicleSpawnPoint.Pos, 5.0) then
+                ESX.Game.SpawnVehicle(car, Config.Jobs[work].VehicleSpawnPoint.Pos, 180.53, function(entity)
                     SetVehicleNumberPlateText(entity, GetPlayerServerId(PlayerId()))
-                    SetEntityHeading(entity,270.4)
-                    TaskWarpPedIntoVehicle(PlayerPedId(), entity, -1)
+                    SetEntityHeading(entity,Config.Jobs[work].VehicleSpawnPoint.Heading)
+                    TaskWarpPedIntoVehicle(ped, entity, -1)
+                    vehicle=entity
                     TriggerServerEvent('esx_jobs:spawnVehicle', currentDelivery)
                 end)
             else return end
@@ -148,7 +157,7 @@ function getDeliveries()
         end
 
         local deliveries = {}
-        for k, v in pairs(Config.Delivery) do
+        for k, v in pairs(Config.Jobs[work].Delivery) do
             table.insert(deliveries, v)
         end
         local myDelivery = deliveries[math.random(1, #deliveries)]
@@ -174,6 +183,7 @@ function getDeliveries()
             currentIndex=currentIndex+1
         end
     if(currentIndex==1)then
+
     blockVehicle=true
     TriggerEvent("pNotify:SendNotification", {
     text = "Cargando mercaderia.",
@@ -181,6 +191,7 @@ function getDeliveries()
     timeout = 3000,
     layout = "centerLeft"
     })
+    
     
     Citizen.Wait(3500)
     cooldown= GetGameTimer()+90000
@@ -205,35 +216,42 @@ function getDeliveries()
 	SetBlipRoute(deliveryblip, true)
 end
 
-function delivery()
+function delivery(work)
     if(currentDelivery~=nil)then
         if(not IsPedInAnyVehicle(ped))then
             return
         end
         local vehicle = GetVehiclePedIsIn(ped)
         local plate = GetVehicleNumberPlateText(vehicle)
-        if tonumber(plate)~=nil and tonumber(plate) ~= GetPlayerServerId(PlayerId()) then
+        if not tonumber(plate) or tonumber(plate)~=nil and tonumber(plate) ~= GetPlayerServerId(PlayerId()) then
+            ESX.ShowNotification('Debes estar en tu vehículo de trabajo')
             return
         else
             if(deliveryblip)then                
             RemoveBlip(deliveryblip)
             end
             blockVehicle=true
+            local delTime = Config.Jobs[work].DeliveryTime
             TriggerEvent("pNotify:SendNotification", {
             text = "Descargando producto.",
             type = "success",
-            timeout = 3000,
+            timeout = Config.Jobs[work].DeliveryTime-500,
             layout = "centerLeft"
             })
 
-            Citizen.Wait(3500)
+
+
+            Citizen.Wait(delTime)
+
+
             FreezeEntityPosition(vehicle,false)
             blockVehicle=false
+
             TriggerServerEvent("esx_jobs:delivery", currentDelivery)
             if currentIndex == #currentDelivery.Route then
                 ESX.ShowNotification('Recorrido completado, regresa por mas entregas!')
                 currentDelivery = nil
-                SetNewWaypoint(Config.Zones.VehicleSpawner.Pos.x, Config.Zones.VehicleSpawner.Pos.y)
+                SetNewWaypoint(Config.Jobs[work].Zones.VehicleSpawner.Pos.x, Config.Jobs[work].Zones.VehicleSpawner.Pos.y)
                 deliveryblip = nil
             else
                 getDeliveries()
@@ -265,9 +283,12 @@ end
 
 
 Citizen.CreateThread(function()
+    while PlayerData.job == nil do
+        Citizen.Wait(100)
+    end
     while true do
-        Citizen.Wait(500)
-		if (PlayerData.job ~= nil and PlayerData.job.name == "trucker") then
+        local job = PlayerData.job
+		if (job and (job.name == "trucker" or job.name== "gas" or job.name=="delivery")) then
             ped = PlayerPedId()
             coords = GetEntityCoords(ped)
             local vehicle = GetVehiclePedIsIn(ped,true)
@@ -284,6 +305,7 @@ Citizen.CreateThread(function()
         else
             Citizen.Wait(3000)
         end
+        Citizen.Wait(500)
     end
 end)
 
@@ -292,8 +314,10 @@ Citizen.CreateThread(function()
     coords = GetEntityCoords(ped)
     while true do
         Citizen.Wait(5)
-        if (PlayerData.job ~= nil and PlayerData.job.name == "trucker") then
-            for k, v in pairs(Config.Zones) do
+        local job = PlayerData.job
+        if (job ~= nil and (job.name == "trucker" or job.name=="delivery" or job.name=="gas")) then
+            job=job.name
+            for k, v in pairs(Config.Jobs[job].Zones) do
                 local distance = #(vector3(coords.x, coords.y, coords.z) - vector3(v.Pos.x, v.Pos.y, v.Pos.z))
                 if (distance <= 30.0) then
                     if not v.Duty or onDuty then
@@ -310,7 +334,7 @@ Citizen.CreateThread(function()
                                         return
 									end
 									if currentDelivery==nil then
-									getDeliveries()
+									getDeliveries(job)
                                     else 
                                         if (GetGameTimer() < cooldown) then 
                                         ESX.ShowNotification("Acabas de comenzar una entrega.")
@@ -352,7 +376,7 @@ Citizen.CreateThread(function()
 						if (distance <= currentDelivery.Size.x) then
 							showHelp(currentDelivery.Hint)
                             if (IsControlJustReleased(0, 38)) and not IsPedDeadOrDying(ped) then
-								delivery()
+								delivery(job)
 							end
 						end
 					end

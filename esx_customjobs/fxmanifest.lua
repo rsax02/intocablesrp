@@ -18,6 +18,7 @@ client_scripts {
 	'locales/es.lua',
 	'config.lua',
 	'client/main.lua',
-	'client/works.lua'
+	'client/works.lua',
+	'client/nightclub.lua',
+	'client/garbage.lua'
 }
-client_script '@niward-ac/Shareds/ToLoad.lua'
