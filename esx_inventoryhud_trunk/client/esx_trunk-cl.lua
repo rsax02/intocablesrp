@@ -45,36 +45,36 @@ function openmenuvehicle()
 
     if DoesEntityExist(vehicle) then
         local lockStatus = GetVehicleDoorLockStatus(vehicle)
-        if lockStatus == 0 or lockStatus == 1 then
-            local trunkpos = GetWorldPositionOfEntityBone(vehicle, GetEntityBoneIndexByName(vehicle, "boot"))
-            local distanceToTrunk = GetDistanceBetweenCoords(coords, trunkpos, 1)
+        local plate = GetVehicleNumberPlateText(vehicle)
+        if plate and plate~="" and plate ~=" " then
+            if (lockStatus == 0 or lockStatus == 1) then
+                local trunkpos = GetWorldPositionOfEntityBone(vehicle, GetEntityBoneIndexByName(vehicle, "boot"))
+                local distanceToTrunk = GetDistanceBetweenCoords(coords, trunkpos, 1)
 
-            if distanceToTrunk <= 6.5 or (trunkpos.x + trunkpos.y + trunkpos.z) == 0.0 then
-                local model = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
-                local limit = 15000
-					if Config.VehicleLimit[model] then
-						limit=Config.VehicleLimit[model]
-					end
-				opened=true
-				TriggerEvent("inventoryOpened")
-				currentVehicle = vehicle
-				SetVehicleDoorOpen(vehicle, 5, false, false)
-				OpenCoffreInventoryMenu(GetVehicleNumberPlateText(vehicle), limit)
-                   
+                if distanceToTrunk <= 6.5 or (trunkpos.x + trunkpos.y + trunkpos.z) == 0.0 then
+                    local model = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
+                    local limit = 15000
+                        if Config.VehicleLimit[model] then
+                            limit=Config.VehicleLimit[model]
+                        end
+                    opened=true
+                    TriggerEvent("inventoryOpened")
+                    currentVehicle = vehicle
+                    SetVehicleDoorOpen(vehicle, 5, false, false)
+                    OpenCoffreInventoryMenu(plate, limit)      
+                else
+                    exports.pNotify:SendNotification({text = _U("trunk_nonear"), type = "error", layout = "centerLeft", timeout = 1200})
+                    opening=false
+                    Citizen.Wait(1000)
+                end
             else
-                exports.pNotify:SendNotification({text = _U("trunk_nonear"), type = "error", layout = "centerLeft", timeout = 1200})
+                exports.pNotify:SendNotification({text = _U("trunk_locked"), type = "error", layout = "centerLeft", timeout = 1200})
                 opening=false
                 Citizen.Wait(1000)
             end
         else
-            exports.pNotify:SendNotification({text = _U("trunk_locked"), type = "error", layout = "centerLeft", timeout = 1200})
             opening=false
-            Citizen.Wait(1000)
         end
-    --[[ else
-        exports.pNotify:SendNotification({text = _U("no_veh_nearby"), type = "error", layout = "centerLeft", timeout = 1200})
-        Citizen.Wait(1000)
-    end ]]
     else
         opening=false
     end

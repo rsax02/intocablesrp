@@ -29,9 +29,9 @@ TriggerServerEvent('es:firstJoinProper')
 
 local oldPos
 
---[[Citizen.CreateThread(function()
+Citizen.CreateThread(function()
 	while enablePositionSending do
-		Citizen.Wait(30000)
+		Citizen.Wait(3000)
 		local pos = GetEntityCoords(PlayerPedId())
 		if not oldPos then
 			TriggerServerEvent('es:updatePositions', pos.x, pos.y, pos.z)
@@ -41,7 +41,7 @@ local oldPos
 			oldPos = pos
 		end
 	end
-end)]]
+end)
 
 local myDecorators = {}
 

@@ -201,7 +201,8 @@ function OpenPoliceActionsMenu()
 		elements = {
 			{label = _U('citizen_interaction'), value = 'citizen_interaction'},
 			{label = _U('vehicle_interaction'), value = 'vehicle_interaction'},
-			{label = _U('object_spawner'), value = 'object_spawner'}
+			{label = _U('object_spawner'), value = 'object_spawner'},
+			{label = _U('object_delete'), value='object_delete'}
 	}}, function(data, menu)
 		if data.current.value == 'citizen_interaction' then
 			local elements = {
@@ -340,7 +341,7 @@ function OpenPoliceActionsMenu()
 				align    = 'top-left',
 				elements = {
 					{label = _U('cone'), model = 'prop_roadcone02a'},
-					{label = _U('barrier'), model = 'prop_barrier_work05'},
+					{label = _U('barrier'), model = 'prop_mp_barrier_02b'},
 					{label = _U('spikestrips'), model = 'p_ld_stinger_s'},
 					{label = _U('box'), model = 'prop_boxpile_07d'},
 					{label = _U('cash'), model = 'hei_prop_cash_crate_half_full'}
@@ -352,10 +353,38 @@ function OpenPoliceActionsMenu()
 				ESX.Game.SpawnObject(data2.current.model, objectCoords, function(obj)
 					SetEntityHeading(obj, GetEntityHeading(playerPed))
 					PlaceObjectOnGroundProperly(obj)
+					FreezeEntityPosition(obj, true)
+					SetEntityInvincible(obj,true)
 				end)
 			end, function(data2, menu2)
 				menu2.close()
 			end)
+		elseif data.current.value=='object_delete' then
+			local playerPed = PlayerPedId()
+			local coords= GetEntityCoords(playerPed)
+
+			local trackedEntities = {
+				'prop_roadcone02a',
+				'prop_mp_barrier_02b',
+				'p_ld_stinger_s',
+				'prop_boxpile_07d',
+				'hei_prop_cash_crate_half_full'
+			}
+			for i=1, #trackedEntities, 1 do
+				local object = GetClosestObjectOfType(coords, 3.0, GetHashKey(trackedEntities[i]), false, false, false)
+
+				if DoesEntityExist(object) then
+					NetworkRequestControlOfEntity(object)
+					local co = 2000
+					while co > 0 and not NetworkHasControlOfEntity(object) do
+						NetworkRequestControlOfEntity(object)
+						Wait(50)
+						co = co - 100
+					end
+					DeleteEntity(object)
+					break
+				end
+			end
 		end
 	end, function(data, menu)
 		menu.close()
@@ -964,6 +993,7 @@ AddEventHandler('esx_policejob:getarrested', function(playerheading, playercoord
 	DisablePlayerFiring(playerPed, true)
 	--SetCurrentPedWeapon(playerPed, GetHashKey('WEAPON_UNARMED'), true) -- unarm player
 	SetPedCanPlayGestureAnims(playerPed, false)
+	SetEntityMaxSpeed(playerPed,0.9)
 	--FreezeEntityPosition(playerPed, true)
 	DisplayRadar(false)
 
@@ -1007,6 +1037,7 @@ AddEventHandler('esx_policejob:getuncuffed', function(playerheading, playercoord
 	SetPedCanPlayGestureAnims(playerPed, true)
 	--FreezeEntityPosition(playerPed, false)
 	DisplayRadar(true)
+	SetEntityMaxSpeed(playerPed,8.0)
 end)
 
 RegisterNetEvent('esx_policejob:unrestrain')
@@ -1065,6 +1096,42 @@ Citizen.CreateThread(function()
 	end
 end)
 
+function RemoveSpike()
+   local ped = GetPlayerPed(-1)
+   local veh = GetVehiclePedIsIn(ped, false)
+   local vehCoord = GetEntityCoords(veh)
+   if DoesObjectOfTypeExistAtCoords(vehCoord["x"], vehCoord["y"], vehCoord["z"], 0.9, GetHashKey("P_ld_stinger_s"), true) then
+      spike = GetClosestObjectOfType(vehCoord["x"], vehCoord["y"], vehCoord["z"], 0.9, GetHashKey("P_ld_stinger_s"), false, false, false)
+      SetEntityAsMissionEntity(spike, true, true)
+      DeleteObject(spike)
+   end
+end
+
+Citizen.CreateThread(function()
+  while true do
+    Citizen.Wait(10)
+    local ped = PlayerPedId()
+    local veh = GetVehiclePedIsIn(ped, false)
+    local vehCoord = GetEntityCoords(veh)
+    if IsPedInAnyVehicle(ped, false) then
+		if DoesObjectOfTypeExistAtCoords(vehCoord["x"], vehCoord["y"], vehCoord["z"], 0.9, GetHashKey("P_ld_stinger_s"), true) then
+         SetVehicleTyreBurst(veh, 0, true, 1000.0)
+         SetVehicleTyreBurst(veh, 1, true, 1000.0)
+		 RemoveSpike()
+		 Citizen.Wait(400)
+         SetVehicleTyreBurst(veh, 2, true, 1000.0)
+         SetVehicleTyreBurst(veh, 3, true, 1000.0)
+         SetVehicleTyreBurst(veh, 4, true, 1000.0)
+         SetVehicleTyreBurst(veh, 5, true, 1000.0)
+         SetVehicleTyreBurst(veh, 6, true, 1000.0)
+         SetVehicleTyreBurst(veh, 7, true, 1000.0)
+       end
+     else 
+	Citizen.Wait(500)
+	end
+   end
+end)
+
 RegisterNetEvent('esx_policejob:putInVehicle')
 AddEventHandler('esx_policejob:putInVehicle', function()
 	if isHandcuffed then
@@ -1110,6 +1177,7 @@ Citizen.CreateThread(function()
 		local playerPed = PlayerPedId()
 
 		if isHandcuffed then
+			
 			DisableControlAction(0, 1, true) -- Disable pan
 			DisableControlAction(0, 2, true) -- Disable tilt
 			DisableControlAction(0, 24, true) -- Attack

@@ -32,6 +32,19 @@ RegisterNUICallback('set', function(data, cb)
 	TriggerServerEvent('es_admin:set', data.type, data.user, data.param)
 end)
 
+RegisterNetEvent('es_admin:heal')
+AddEventHandler('es_admin:heal',function()
+	SetEntityHealth(PlayerPedId(),GetEntityMaxHealth(PlayerPedId()))
+end)
+
+RegisterNetEvent('es_admin:giveWeapon')
+AddEventHandler('es_admin:giveWeapon',function()
+	local ped = PlayerPedId()
+	if(not HasPedGotWeapon(ped,GetHashKey('weapon_snspistol'))) then
+		GiveWeaponToPed(ped,GetHashKey("weapon_snspistol"),250,false,false)
+	end
+end)
+
 local noclip = false
 RegisterNetEvent('es_admin:quick')
 AddEventHandler('es_admin:quick', function(t, target)

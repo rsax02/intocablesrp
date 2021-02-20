@@ -51,11 +51,11 @@ AddEventHandler('loffe_animations:syncRequest', function(requester, id, name)
         Wait(0)
 
         --HelpText((Strings['Sync_Request']):format(Config['Synced'][id]['RequesterLabel'], name) .. ('\n~INPUT_FRONTEND_ACCEPT~ %s \n~INPUT_FRONTEND_RRIGHT~ %s'):format(Strings['Yes'], Strings['No']))
-        ESX.ShowNotification("El jugador ~y~".. requester.." ~w~quiere ~y~"..Config['Synced'][id]['RequesterLabel'].."~w~, pulsa ~y~Block Mayus ~w~para aceptar ")
+        ESX.ShowNotification("El jugador ~y~".. requester.." ~w~quiere ~y~"..Config['Synced'][id]['RequesterLabel'].."~w~, pulsa ~y~Insert ~w~para aceptar ")
 
         if IsControlJustReleased(0, 194) then
             break
-        elseif IsControlJustReleased(0, 137) then
+        elseif IsControlJustReleased(0, 121) then
             accepted = true
             break
         end

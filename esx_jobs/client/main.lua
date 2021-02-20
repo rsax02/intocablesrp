@@ -65,6 +65,31 @@ Citizen.CreateThread(function()
 	end
 end)
 
+Citizen.CreateThread(function()
+	for k,v in pairs(Config.Jobs.drugs.Zones) do
+		if v.Blip then
+			local blip = AddBlipForCoord(v.Pos.x,v.Pos.y,v.Pos.z)
+			SetBlipSprite  (blip, Config.Jobs.drugs.BlipInfos.Sprite)
+			SetBlipDisplay (blip, 4)
+			SetBlipScale   (blip, 1.0)
+			SetBlipCategory(blip, 3)
+			SetBlipColour  (blip, Config.Jobs.drugs.BlipInfos.Color)
+			SetBlipAsShortRange(blip, true)
+
+			BeginTextCommandSetBlipName("STRING")
+			AddTextComponentString(v.Name)
+			EndTextCommandSetBlipName(blip)
+
+			local radius = AddBlipForRadius(v.Pos.x, v.Pos.y, v.Pos.z, Config.Jobs.drugs.BlipInfos.Radius)
+			
+			SetBlipHighDetail(radius, true)
+			SetBlipAlpha(radius, 150)
+			SetBlipColour(radius, Config.Jobs.drugs.BlipInfos.Color)
+			SetBlipAsShortRange(radius, true)
+		end
+	end
+end)
+
 function showHelpText(s)
     SetTextComponentFormat("STRING")
     AddTextComponentString(s)
@@ -105,7 +130,35 @@ function OpenMenu()
 	end)
 end
 
-AddEventHandler('esx_jobs:action', function(job, zone,key)
+RegisterNetEvent('esx_jobs:pbc')
+AddEventHandler('esx_jobs:pbc', function()
+	RequestAnimSet("MOVE_M@DRUNK@SLIGHTLYDRUNK")
+	while not HasAnimSetLoaded("MOVE_M@DRUNK@SLIGHTLYDRUNK") do
+		Citizen.Wait(0)
+	end
+	local ped = PlayerPedId()
+	TaskStartScenarioInPlace(ped, "WORLD_HUMAN_SMOKING_POT", 0, true)
+	Citizen.Wait(10000)
+	DoScreenFadeOut(1000)
+	Citizen.Wait(1000)
+	ClearPedTasksImmediately(ped)
+	SetTimecycleModifier("spectator5")
+	SetPedMotionBlur(ped, true)
+	SetPedMovementClipset(ped, "MOVE_M@DRUNK@SLIGHTLYDRUNK", true)
+	SetPedIsDrunk(ped, true)
+	DoScreenFadeIn(1000)
+	Citizen.Wait(60000)
+	DoScreenFadeOut(1000)
+	Citizen.Wait(1000)
+	DoScreenFadeIn(1000)
+	ClearTimecycleModifier()
+	ResetScenarioTypesEnabled()
+	ResetPedMovementClipset(ped, 0)
+	SetPedIsDrunk(ped, false)
+	SetPedMotionBlur(ped, false)
+end)
+
+AddEventHandler('esx_jobs:action', function(job, zone,key,drugs)
 	menuIsShowed = true
 	if zone.Type == "cloakroom" then
 		OpenMenu()
@@ -118,7 +171,7 @@ AddEventHandler('esx_jobs:action', function(job, zone,key)
 			ESX.ShowNotification(_U('foot_work'))
 		else
 			if not IsPedInAnyVehicle(PlayerPedId(),false) then
-				TriggerServerEvent('esx_jobs:startWork', key)
+				TriggerServerEvent('esx_jobs:startWork', key,drugs)
 				isworking=true
 			end
 		end
@@ -215,7 +268,7 @@ AddEventHandler('esx_jobs:action', function(job, zone,key)
 
 			hintToDisplay = "no hint to display"
 			hintIsShowed = false
-			TriggerServerEvent('esx_jobs:startWork', key)
+			TriggerServerEvent('esx_jobs:startWork', key,drugs)
 			isworking=true
 		end
 	end
@@ -289,6 +342,7 @@ function refreshBlips()
 				end
 			end
 		end
+
 	end
 end
 
@@ -349,19 +403,32 @@ Citizen.CreateThread(function()
 		local zones = {}
 
 		if PlayerData.job ~= nil then
+			local sleep = true
 			for k,v in pairs(Config.Jobs) do
 				if PlayerData.job.name == k then
 					zones = v.Zones
 				end
 			end
 
+
 			for k,v in pairs(zones) do
-				if onDuty or v.Type == "cloakroom" or PlayerData.job.name == "reporter" then
+				if onDuty or v.Type == "cloakroom" or v.Duty then
 					if(v.Marker ~= -1 and #(coords- vector3(v.Pos.x, v.Pos.y, v.Pos.z)) < Config.DrawDistance) then
 						DrawMarker(v.Marker, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, false, false, false, false)
+						sleep=false
 					end
 				end
 			end
+
+			for k,v in pairs(Config.Jobs.drugs.Zones) do
+				if(#(coords- vector3(v.Pos.x, v.Pos.y, v.Pos.z))<Config.DrawDistance) then
+					DrawMarker(v.Marker,v.Pos.x,v.Pos.y,v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, false, false, false, false)
+					sleep=false
+				end
+			end
+			if sleep then Citizen.Wait(500) end
+		else 
+			Citizen.Wait(1500)
 		end
 	end
 end)
@@ -370,18 +437,23 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(5)
+		local sleep = true
 		for k,v in pairs(Config.PublicZones) do
 			if(v.Marker ~= -1 and #(coords- vector3(v.Pos.x, v.Pos.y, v.Pos.z)) < Config.DrawDistance) then
 				DrawMarker(v.Marker, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, false, false, false, false)
+				sleep=false
+				break
 			end
 		end
+
+		if sleep then Citizen.Wait(5000) end
 	end
 end)
 
 -- Activate public marker
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(6)
+		Citizen.Wait(8)
 		local position = nil
 		local zone     = nil
 
@@ -395,10 +467,11 @@ Citizen.CreateThread(function()
 				isInPublicMarker = false
 			end
 		end
-
-		if IsControlJustReleased(0, Keys['E']) and isInPublicMarker then
-			ESX.Game.Teleport(PlayerPedId(), position)
-			isInPublicMarker = false
+		if position then
+			if IsControlJustReleased(0, Keys['E']) and isInPublicMarker then
+				ESX.Game.Teleport(PlayerPedId(), position)
+				isInPublicMarker = false
+			end
 		end
 
 		-- hide or show top left zone hints
@@ -417,84 +490,103 @@ end)
 -- Activate menu when player is inside marker
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		Citizen.Wait(7)
+
+		local zones = nil
+		local job = nil
+
+		local sleep = true
+		local drugs = false
+
+		local currentZone = nil
+		local zone        = nil
+		local lastZone    = nil
 
 		if PlayerData.job ~= nil and PlayerData.job.name ~= 'unemployed' then
-			local zones = nil
-			local job = nil
-
 			for k,v in pairs(Config.Jobs) do
 				if PlayerData.job.name == k then
 					job = v
 					zones = v.Zones
 				end
-			end
+			end		
 
 			if zones ~= nil then
-				local currentZone = nil
-				local zone        = nil
-				local lastZone    = nil
-
 				for k,v in pairs(zones) do
 					if #(vector2(coords.x,coords.y)-vector2(v.Pos.x, v.Pos.y)) < v.Size.x/1.5 then
 						isInMarker  = true
 						currentZone = k
 						zone        = v
+						sleep       = false
 						break
 					else
 						isInMarker  = false
 					end
 				end
-
-				if IsControlJustReleased(0, Keys['E']) and not menuIsShowed and isInMarker then
-					if onDuty or zone.Type == "cloakroom" then
-						TriggerEvent('esx_jobs:action', job, zone, currentZone)
-					end
-				end
-
-				-- hide or show top left zone hints
-				if isInMarker and not menuIsShowed then
-					hintIsShowed = true
-					if (onDuty or zone.Type == "cloakroom") and zone.Type ~= "vehdelete" then
-						hintToDisplay = zone.Hint
-						hintIsShowed = true
-					elseif zone.Type == "vehdelete" and onDuty then
-						local playerPed = PlayerPedId()
-						if IsPedInAnyVehicle(playerPed, false) then
-							hintToDisplay = zone.Hint
-							hintIsShowed = true
-							--local vehicle = GetVehiclePedIsIn(playerPed, false)
-							--local driverPed = GetPedInVehicleSeat(vehicle, -1)
-							--if playerPed == driverPed then
-								--if (ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))==tostring(GetPlayerServerId(PlayerId()))) then
-								--end
-							--else
-								--hintToDisplay = _U('not_your_vehicle')
-							--end
-						else
-							hintIsShowed=false
-						end
-					elseif onDuty and zone.Spawner ~= spawner then
-						hintToDisplay = _U('wrong_point')
-						hintIsShowed = true
-					else
-						hintToDisplay = nil
-						hintIsShowed = false
-					end
-				end
-
-				if isInMarker and not hasAlreadyEnteredMarker then
-					hasAlreadyEnteredMarker = true
-				end
-
-				if not isInMarker and hasAlreadyEnteredMarker then
-					hasAlreadyEnteredMarker = false
-					TriggerEvent('esx_jobs:hasExitedMarker', zone)
+			end
+		end
+		if not currentZone then
+			for k,v in pairs(Config.Jobs.drugs.Zones) do
+				if #(vector3(coords.x,coords.y,coords.z)-vector3(v.Pos.x, v.Pos.y,v.Pos.z)) < v.Size.x/1.5 then
+					isInMarker  = true
+					currentZone = k
+					zone        = v
+					sleep       = false
+					drugs       = true
+					break
+				else 
+					isInMarker=false
 				end
 			end
-		else
-			Citizen.Wait(3000)
 		end
+	
+		if IsControlJustReleased(0, Keys['E']) and not menuIsShowed and isInMarker then
+			if zone.Duty or onDuty or zone.Type == "cloakroom" then
+				TriggerEvent('esx_jobs:action', job, zone, currentZone,drugs)
+			end
+		end
+
+		-- hide or show top left zone hints
+		if isInMarker and not menuIsShowed then
+			hintIsShowed = true
+			if zone.Duty or (onDuty or zone.Type == "cloakroom") and zone.Type ~= "vehdelete" then
+				hintToDisplay = zone.Hint
+				hintIsShowed = true
+			elseif zone.Type == "vehdelete" and onDuty then
+				local playerPed = PlayerPedId()
+				if IsPedInAnyVehicle(playerPed, false) then
+					hintToDisplay = zone.Hint
+					hintIsShowed = true
+					--local vehicle = GetVehiclePedIsIn(playerPed, false)
+					--local driverPed = GetPedInVehicleSeat(vehicle, -1)
+					--if playerPed == driverPed then
+						--if (ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))==tostring(GetPlayerServerId(PlayerId()))) then
+						--end
+					--else
+						--hintToDisplay = _U('not_your_vehicle')
+					--end
+				else
+					hintIsShowed=false
+				end
+			elseif onDuty and zone.Spawner ~= spawner then
+				hintToDisplay = _U('wrong_point')
+				hintIsShowed = true
+			else
+				hintToDisplay = nil
+				hintIsShowed = false
+			end
+		end
+
+		if isInMarker and not hasAlreadyEnteredMarker then
+			hasAlreadyEnteredMarker = true
+		end
+
+		if not isInMarker and hasAlreadyEnteredMarker then
+			hasAlreadyEnteredMarker = false
+			TriggerEvent('esx_jobs:hasExitedMarker', zone)
+		end
+
+		if not isInMarker then Citizen.Wait(500) end
+
 	end
 end)
 

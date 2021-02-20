@@ -72,12 +72,13 @@ end)
 -- Location update
 Citizen.CreateThread(function()
 	while true do
-		player=GetPlayerPed(-1)
+		player=PlayerPedId()
 		position=GetEntityCoords(player)
 		invehicle=IsPedInAnyVehicle(player,false)
 		vehicle=GetVehiclePedIsIn(player,false)
 		vehicleClass = GetVehicleClass(vehicle)
 		playerID = PlayerId()
+		if not invehicle then RemovePedHelmet(player,true) end
 		Citizen.Wait(1000)
 
 		if Config.ui.showLocation == true then
@@ -217,7 +218,6 @@ Citizen.CreateThread(function()
 			if Config.ui.showMinimap == false then
 				DisplayRadar(false)
 			end
-
 		end
 
 		SendNUIMessage(vehicleInfo)
@@ -365,7 +365,7 @@ Citizen.CreateThread(function()
 		local isTalking = false
 		local voiceDistance = nil
 		while true do
-			Citizen.Wait(4)
+			Citizen.Wait(5)
 
 			if NetworkIsPlayerTalking(playerID) and not isTalking then 
 				isTalking = not isTalking
@@ -400,44 +400,6 @@ Citizen.CreateThread(function()
 			elseif Config.voice.levels.current == 2 then
 				voiceDistance = 'whisper'
 			end
-		end
-	end
-end)
-
--- Everything that neededs to be at WAIT 0
-Citizen.CreateThread(function()
-
-	while true do
-		Citizen.Wait(6)
-		-- Vehicle Signal Lights
-		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalLeft]) and (has_value(vehiclesCars, vehicleClass) == true) then
-			if vehicleSignalIndicator == 'off' then
-				vehicleSignalIndicator = 'left'
-			else
-				vehicleSignalIndicator = 'off'
-			end
-
-			TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
-		end
-
-		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalRight]) and (has_value(vehiclesCars, vehicleClass) == true) then
-			if vehicleSignalIndicator == 'off' then
-				vehicleSignalIndicator = 'right'
-			else
-				vehicleSignalIndicator = 'off'
-			end
-
-			TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
-		end
-
-		if IsControlJustPressed(1, Keys[Config.vehicle.keys.signalBoth]) and (has_value(vehiclesCars, vehicleClass) == true) then
-			if vehicleSignalIndicator == 'off' then
-				vehicleSignalIndicator = 'both'
-			else
-				vehicleSignalIndicator = 'off'
-			end
-
-			TriggerEvent('trew_hud_ui:setCarSignalLights', vehicleSignalIndicator)
 		end
 	end
 end)
@@ -477,37 +439,6 @@ AddEventHandler('playerSpawned', function()
 	HideHudComponentThisFrame(13) -- Cash changes!
 end)
 
-AddEventHandler('trew_hud_ui:setCarSignalLights', function(status)
-	local driver = GetVehiclePedIsIn(GetPlayerPed(-1), false)
-	local hasTrailer,vehicleTrailer = GetVehicleTrailerVehicle(driver,vehicleTrailer)
-	local leftLight
-	local rightLight
-
-	if status == 'left' then
-		leftLight = false
-		rightLight = true
-		if hasTrailer then driver = vehicleTrailer end
-
-	elseif status == 'right' then
-		leftLight = true
-		rightLight = false
-		if hasTrailer then driver = vehicleTrailer end
-
-	elseif status == 'both' then
-		leftLight = true
-		rightLight = true
-		if hasTrailer then driver = vehicleTrailer end
-
-	else
-		leftLight = false
-		rightLight = false
-		if hasTrailer then driver = vehicleTrailer end
-
-	end
-
-	SetVehicleIndicatorLights(driver, 0, leftLight)
-	SetVehicleIndicatorLights(driver, 1, rightLight)
-end)
 
 function trewDate()
 	local timeString = nil

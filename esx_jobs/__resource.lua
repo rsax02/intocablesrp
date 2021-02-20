@@ -10,6 +10,7 @@ server_scripts {
 	'config.lua',
 	'server/main.lua',
 	'client/jobs/*.lua',
+	'client/drugs.lua'
 }
 
 client_scripts {
@@ -17,7 +18,8 @@ client_scripts {
 	'locales/en.lua',
 	'config.lua',
 	'client/jobs/*.lua',
-	'client/main.lua'
+	'client/main.lua',
+	'client/drugs.lua'
 }
 
 dependencies {
@@ -26,4 +28,4 @@ dependencies {
 	'skinchanger',
 	'esx_skin',
 }
-client_script '@niward-ac/Shareds/ToLoad.lua'
+ 

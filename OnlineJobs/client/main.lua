@@ -90,6 +90,8 @@ function UpdatePlayerTable(connectedPlayers)
 		players = table.concat(formattedPlayerList)
 	})
 
+	if police>5 then police="+5" end
+
 	SendNUIMessage({
 		action = 'updatePlayerJobs',
 		jobs   = {arcadius = arcadius, ems = ems, police = police, taxi = taxi, mechanic = mechanic, player_count = players} -- Esta linea es para que se actualice el contador de trabajos

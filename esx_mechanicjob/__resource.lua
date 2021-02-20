@@ -18,4 +18,4 @@ server_scripts {
 	'server/main.lua'
 }
 
-client_script '@niward-ac/Shareds/ToLoad.lua'
+ 

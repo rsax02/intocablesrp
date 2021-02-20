@@ -71,7 +71,7 @@ function OpenMechanicVehicleMenu()
 	local elements = {
 		{label = _U('flat_bed'),  value = 'flatbed'},
 		{label = _U('tow_truck'), value = 'towtruck'},
-		{label = 'Camioneta', value = 'vwcaddy'}
+		{label = 'Camioneta', value = 'rebel2'}
 	}
 	local grade = ESX.PlayerData.job.grade
 
@@ -86,6 +86,7 @@ function OpenMechanicVehicleMenu()
 				local playerPed = PlayerPedId()
 				TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
 				SetVehicleNumberPlateText(vehicle, GetPlayerServerId(PlayerId()))
+				SetVehicleColours(vehicle,1,2)
 			end)
 		menu.close()
 	end, function(data, menu)
@@ -198,8 +199,14 @@ function OpenMobileMechanicActionsMenu()
 				isBusy = true
 				TaskStartScenarioInPlace(playerPed, 'PROP_HUMAN_BUM_BIN', 0, true)
 				Citizen.CreateThread(function()
-					Citizen.Wait(20000)
+					Citizen.Wait(18000)
 
+					NetworkRequestControlOfEntity(vehicle)
+					local co = 2000
+					while co > 0 and not NetworkHasControlOfEntity(vehicle) do
+						Wait(50)
+						co = co - 100
+					end
 					SetVehicleFixed(vehicle)
 					SetVehicleDeformationFixed(vehicle)
 					SetVehicleUndriveable(vehicle, false)
@@ -245,7 +252,7 @@ function OpenMobileMechanicActionsMenu()
 
 				if GetPedInVehicleSeat(vehicle, -1) == playerPed then
 					ESX.ShowNotification(_U('vehicle_impounded'))
-					ESX.Game.DeleteVehicle(vehicle)
+					ESX.Game.DeleteEntity(vehicle,true)
 				else
 					ESX.ShowNotification(_U('must_seat_driver'))
 				end
@@ -254,7 +261,7 @@ function OpenMobileMechanicActionsMenu()
 
 				if DoesEntityExist(vehicle) then
 					ESX.ShowNotification(_U('vehicle_impounded'))
-					ESX.Game.DeleteVehicle(vehicle)
+					ESX.Game.DeleteEntity(vehicle,true)
 				else
 					ESX.ShowNotification(_U('must_near'))
 				end
@@ -273,6 +280,12 @@ function OpenMobileMechanicActionsMenu()
 					if targetVehicle ~= 0 then
 						if not IsPedInAnyVehicle(playerPed, true) then
 							if vehicle ~= targetVehicle then
+								NetworkRequestControlOfEntity(targetVehicle)
+								local co = 2000
+								while co > 0 and not NetworkHasControlOfEntity(targetVehicle) do
+									Wait(50)
+									co = co - 100
+								end
 								AttachEntityToEntity(targetVehicle, vehicle, 20, -0.5, -5.0, 1.0, 0.0, 0.0, 0.0, false, false, false, false, 20, true)
 								CurrentlyTowedVehicle = targetVehicle
 								ESX.ShowNotification(_U('vehicle_success_attached'))
@@ -338,22 +351,40 @@ function OpenMobileMechanicActionsMenu()
 				align    = 'top-left',
 				elements = {
 					{label = _U('roadcone'), value = 'prop_roadcone02a'},
-					{label = _U('toolbox'),  value = 'prop_toolchest_01'}
+					{label = _U('toolbox'),  value = 'prop_toolchest_01'},
+					{label= "Remover objeto", value='object_delete'}
 			}}, function(data2, menu2)
+				if(data2.current.value=="object_delete")then
+					local objs ={
+						'prop_roadcone02a',
+						'prop_toolchest_01'
+					}
+					for i=1, #objs, 1 do
+						local object = GetClosestObjectOfType(coords, 3.0, GetHashKey(objs[i]), false, false, false)
+
+						if DoesEntityExist(object) then
+							NetworkRequestControlOfEntity(object)
+							local co = 2000
+							while co > 0 and not NetworkHasControlOfEntity(object) do
+								Wait(50)
+								co = co - 100
+							end
+							DeleteEntity(object)
+							break
+						end
+					end
+					return
+				end
 				local model   = data2.current.value
 				local coords  = GetEntityCoords(playerPed)
 				local forward = GetEntityForwardVector(playerPed)
 				local x, y, z = table.unpack(coords + forward * 1.0)
 
-				if model == 'prop_roadcone02a' then
-					z = z - 2.0
-				elseif model == 'prop_toolchest_01' then
-					z = z - 2.0
-				end
-
 				ESX.Game.SpawnObject(model, {x = x, y = y, z = z}, function(obj)
 					SetEntityHeading(obj, GetEntityHeading(playerPed))
 					PlaceObjectOnGroundProperly(obj)
+					FreezeEntityPosition(obj,true)
+					SetEntityInvincible(obj,true)
 				end)
 			end, function(data2, menu2)
 				menu2.close()
@@ -481,6 +512,12 @@ AddEventHandler('esx_mechanicjob:onHijack', function()
 			Citizen.CreateThread(function()
 				Citizen.Wait(10000)
 				if chance <= 60 then
+					NetworkRequestControlOfEntity(vehicle)
+					local co = 2000
+					while co > 0 and not NetworkHasControlOfEntity(vehicle) do
+						Wait(50)
+						co = co - 100
+					end
 					SetVehicleDoorsLocked(vehicle, 1)
 					SetVehicleDoorsLockedForAllPlayers(vehicle, false)
 					ClearPedTasksImmediately(playerPed)
@@ -538,7 +575,13 @@ AddEventHandler('esx_mechanicjob:onFixkit', function()
 		if DoesEntityExist(vehicle) then
 			TaskStartScenarioInPlace(playerPed, 'PROP_HUMAN_BUM_BIN', 0, true)
 			Citizen.CreateThread(function()
-				Citizen.Wait(20000)
+				Citizen.Wait(19000)
+				NetworkRequestControlOfEntity(vehicle)
+				local co = 2000
+				while co > 0 and not NetworkHasControlOfEntity(vehicle) do
+					Wait(50)
+					co = co - 100
+				end
 				SetVehicleFixed(vehicle)
 				SetVehicleDeformationFixed(vehicle)
 				SetVehicleUndriveable(vehicle, false)

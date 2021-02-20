@@ -179,49 +179,25 @@ function MenuCloakRoom()
 		},
 		function(data, menu)
 			if data.current.value == 'citizen_wear' then
-				isInService = false
-				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
-					  local model = nil
-
-					  if skin.sex == 0 then
-						model = GetHashKey("mp_m_freemode_01")
-					  else
-						model = GetHashKey("mp_f_freemode_01")
-					  end
-
-					  RequestModel(model)
-					  while not HasModelLoaded(model) do
-						RequestModel(model)
-						Citizen.Wait(1)
-					  end
-
-					  SetPlayerModel(PlayerId(), model)
-					  SetModelAsNoLongerNeeded(model)
-
-					  TriggerEvent('skinchanger:loadSkin', skin)
-					  TriggerEvent('esx:restoreLoadout')
-        		end)
+					isInService = false
+					ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+						  TriggerEvent('skinchanger:loadSkin', skin)
+					end)
+					TriggerServerEvent('esx_jobs:leftService')
       		end
 			if data.current.value == 'job_wear' then
-				isInService = true
-				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
-	    			if skin.sex == 0 then
-	    				TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_male)
-					else
-	    				TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_female)
-
-					RequestModel(model)
-					while not HasModelLoaded(model) do
-					RequestModel(model)
-					Citizen.Wait(0)
-					end
-
-				SetPlayerModel(PlayerId(), model)
-				SetModelAsNoLongerNeeded(model)
-					end
-
-				end)
-
+				if not isInService then
+					ESX.TriggerServerCallback('esx_jobs:inService',function(can)
+						if can then
+							isInService = true
+							ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
+								TriggerEvent('skinchanger:loadClothes', skin, skin.sex == 0 and jobSkin.skin_male or jobSkin.skin_female)
+							end)	 
+						else 
+							ESX.ShowNotification('No quedan ropas de trabajo disponibles')
+						end
+					end)
+				end
 			end
 			menu.close()
 		end,
@@ -359,6 +335,7 @@ AddEventHandler('esx_garbage:hasEnteredMarker', function(zone)
 
 				if plaquevehicule == plaquevehiculeactuel then
                     CurrentAction     = 'retourcamion'
+					CurrentActionMsg  = 'Presiona ~INPUT_CONTEXT~ para devolver el camion'
 				else
                     CurrentAction     = 'retourcamionannulermission'
                     CurrentActionMsg  = _U('not_your_truck')
@@ -399,8 +376,9 @@ function nouvelledestination()
 	temppayamount = 0
 	temppaytable = nil
 	multibagpay = 0
-
-	if livraisonnombre >= GarbageConfig.MaxDelivery then
+	
+	MissionLivraisonSelect()
+	--[[if livraisonnombre >= GarbageConfig.MaxDelivery then
 		MissionLivraisonStopRetourDepot()
 	else
 
@@ -418,7 +396,7 @@ function nouvelledestination()
 			end
 			MissionLivraisonSelect()
 		end
-	end
+	end]]
 end
 
 function retourcamion_oui()
@@ -584,7 +562,7 @@ end
 
 function SelectBinandCrew()
 	work_truck = GetVehiclePedIsIn(ped, true)
-	bagsoftrash = math.random(2, 7)
+	bagsoftrash = math.random(2,7)
 	local NewBin, NewBinDistance = ESX.Game.GetClosestObject(GarbageConfig.DumpstersAvaialbe)
 	trashcollectionpos = GetEntityCoords(NewBin)
 	platenumb = GetVehicleNumberPlateText(GetVehiclePedIsIn(ped, true))
@@ -605,6 +583,7 @@ Citizen.CreateThread(function()
 					if(#(coords-vector3(v.Pos.x,v.Pos.y,v.Pos.z)) < v.Size.x) then
 						isInMarker  = true
 						currentZone = k
+						break
 					end
 				end
 
@@ -612,6 +591,7 @@ Citizen.CreateThread(function()
 					if(#(coords- vector3(v.Pos.x,v.Pos.y,v.Pos.z)) < v.Size.x) then
 						isInMarker  = true
 						currentZone = k
+						break
 					end
 				end
 
@@ -619,6 +599,7 @@ Citizen.CreateThread(function()
 					if(#(coords-vector3(v.Pos.x,v.Pos.y,v.Pos.z)) < v.Size.x) then
 						isInMarker  = true
 						currentZone = k
+						break
 					end
 				end
 
@@ -727,14 +708,11 @@ Citizen.CreateThread(function()
 							end
 						end
 					end
-					
 					if CurrentAction then
 						if CurrentAction == 'cloakroom' then
 							MenuCloakRoom()
 						elseif CurrentAction == 'vehiclespawner' then
 							MenuVehicleSpawner()
-						elseif CurrentAction == 'vehicledelete' then
-
 						elseif CurrentAction == 'delivery' then
 							SelectBinandCrew()
 							while work_truck == nil do
@@ -751,9 +729,9 @@ Citizen.CreateThread(function()
 						elseif CurrentAction == 'retourcamionperduannulermission' then
 							retourcamionperduannulermission_oui()
 						end
+						CurrentAction = nil
 					end
 
-					CurrentAction = nil
 				end
 
 			else 

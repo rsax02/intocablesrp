@@ -25,8 +25,11 @@ function OpenVehicleSpawnerMenu(type,station,part,partnum)
 		elements=elements
 	}, function(data,menu)
 		ESX.Game.SpawnVehicle(data.current.value, Config.Vehicles[1].SpawnPoints[1].coords, Config.Vehicles[1].SpawnPoints[1].heading, function(vehicle)
-				TaskWarpPedIntoVehicle(PlayerPedId(), vehicle, -1)
+				WashDecalsFromVehicle(vehicle, 1.0)
+				SetVehicleDirtLevel(vehicle)
+				TaskWarpPedIntoVehicle(ped, vehicle, -1)
 				SetVehicleNumberPlateText(vehicle, GetPlayerServerId(PlayerId()))
+				
 			end)
 			menu.close()
 	end, function(data,menu)

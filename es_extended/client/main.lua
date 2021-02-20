@@ -351,29 +351,26 @@ AddEventHandler('esx:spawnPed', function(model)
 end)
 
 RegisterNetEvent('esx:deleteVehicle')
-AddEventHandler('esx:deleteVehicle', function(plate, bypass, wait)
-	Citizen.CreateThread(function()
-		if plate then
-			for vehicle in EnumerateVehicles() do
-				Citizen.Wait(5)
-				if ESX.Math.Trim(GetVehicleNumberPlateText(vehicle)) == tostring(plate) then
-					if bypass then
-						if NetworkGetNetworkIdFromEntity(vehicle) ~= bypass then
-							ESX.Game.DeleteEntity(vehicle,true)
-						end
-					else
+AddEventHandler('esx:deleteVehicle', function(plate, bypass)
+	if plate then
+		for vehicle in EnumerateVehicles() do
+			if ESX.Math.Trim(GetVehicleNumberPlateText(vehicle)) == tostring(plate) then
+				if bypass then
+					if NetworkGetNetworkIdFromEntity(vehicle) ~= bypass then
 						ESX.Game.DeleteEntity(vehicle,true)
 					end
+				else
+					ESX.Game.DeleteEntity(vehicle,true)
 				end
 			end
-		else
-			local vehicle, distance = ESX.Game.GetClosestVehicle()
-			
-			if distance ~= -1 and distance <= 5.0 and DoesEntityExist(vehicle) then
-				ESX.Game.DeleteEntity(vehicle, true)
-			end
 		end
-	end)
+	else
+		local vehicle, distance = ESX.Game.GetClosestVehicle()
+		
+		if distance ~= -1 and distance <= 5.0 and DoesEntityExist(vehicle) then
+			ESX.Game.DeleteEntity(vehicle, true)
+		end
+	end
 end)
 
 --[[RegisterNetEvent('esx:deleteVehicle')

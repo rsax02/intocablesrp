@@ -307,5 +307,9 @@ Config.VehicleLimit = {
 ["fiestawrc"]=10000,
 ["raptor"]=80000,
 ["rmodgtr50"]=35000,
-["baja"]=12000
+["baja"]=12000,
+["bugaceto"]=3500,
+["rmodmi8lb"]=26500,
+["terzo"]=5000,
+["bvit"]=5000
 }

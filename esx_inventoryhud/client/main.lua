@@ -250,14 +250,19 @@ RegisterNUICallback(
 
         if foundPlayer then
             local count = tonumber(data.number)
-
+            
             if data.item.type == "item_weapon" then
-                count = GetAmmoInPedWeapon(PlayerPedId(), GetHashKey(data.item.name))
+                if HasPedGotWeapon(playerPed,GetHashKey(data.item.name)) then
+                    count = GetAmmoInPedWeapon(PlayerPedId(), GetHashKey(data.item.name))
+                else 
+                    ESX.ShowNotification("Que dupeas ctm")
+                    return
+                end
             end
-
             TriggerServerEvent("esx:giveInventhecrowsrp2toryItem", data.player, data.item.type, data.item.name, count)
             Wait(250)
             loadPlayerInventory()
+                
         else
             exports.pNotify:SendNotification(
                 {

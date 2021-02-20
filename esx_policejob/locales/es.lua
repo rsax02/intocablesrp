@@ -65,6 +65,7 @@ Locales['es'] = {
   ['citizen_interaction'] = 'Interacción ciudadana',
   ['vehicle_interaction'] = 'Interacción vehículo',
   ['object_spawner'] = 'Colocar objetos',
+  ['object_delete'] = 'Remover objetos',
 
   ['id_card'] = 'Documento de identidad',
   ['search'] = 'Cachear',
@@ -101,7 +102,7 @@ Locales['es'] = {
   ['traffic_interaction'] = 'Rutas de interacción',
   ['cone'] = 'Cono',
   ['barrier'] = 'Barrera',
-  ['spikestrips'] = 'Grada',
+  ['spikestrips'] = 'Pinchos',
   ['box'] = 'Caja',
   ['cash'] = 'Dinero',
   -- ID Card Menu

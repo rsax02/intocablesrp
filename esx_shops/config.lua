@@ -28,6 +28,20 @@ Config.Zones = {
 		}
 	},
 
+	Cine ={
+		Blip=true,
+		Sprite=135,
+		Size=1.0,
+		Color=40,
+		Name="Cine",
+		Items={
+			{name = 'popcorn', label = 'Palomitas', type = 'money', amount = 50, level = 1},
+		},
+		Jobs=nil,
+		Pos={
+			{x=341.72,y=185.58,z=102.0}
+		}
+	},
 	Arcadius ={
 		Blip=false,
 		Sprite=76,
@@ -189,6 +203,15 @@ Config.Zones = {
 			{name="beer", label="Cerveza",type="money",amount=20,level=1,nightclub=true},
 			{name="oldtime", label="OldTimes",type="money",amount=30,level=1,nightclub=true},
 			{name="russkaya", label="russkaya",type="money",amount=30,level=1,nightclub=true},
+			{name="puntog", label="Punto G",type="money",amount=35,level=1,nightclub=true},
+			{name="ballantines", label="Ballantines",type="money",amount=35,level=1,nightclub=true},
+			{name="blacklabel", label="Black Label",type="money",amount=35,level=1,nightclub=true},
+			{name="chivasregal", label="Chivas Regal",type="money",amount=35,level=1,nightclub=true},
+			{name="doubleblack", label="Double Black",type="money",amount=35,level=1,nightclub=true},
+			{name="fourloco", label="Four Loco",type="money",amount=35,level=1,nightclub=true},
+			{name="redlabel", label="Red Label",type="money",amount=35,level=1,nightclub=true},
+			{name="absolute", label="Absolute",type="money",amount=35,level=1,nightclub=true},
+			{name="pilsen", label="Pilsen",type="money",amount=35,level=1,nightclub=true},
 		},
 		Jobs=nil,
 		Pos = {

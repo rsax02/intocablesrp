@@ -7,4 +7,5 @@ Locales['en'] = {
   ['used_sandwich'] = 'has comido ~y~x1~s~ ~b~Sandwich~s~',
   ['used_empanada'] = 'has comido ~y~x1~s~ ~b~Empanada~s~',
   ['used_bombon'] = 'has comido ~y~x1~s~ ~b~Bombon~s~',
+  ['used_popcorn'] = 'has comido ~y~x1~s~ ~b~Palomitas~s~',
 }

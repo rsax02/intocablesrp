@@ -87,6 +87,12 @@ Locales['en'] = {
   ['m_deliver_diamond']         = 'Presiona ~INPUT_PICKUP~ para vender diamantes',
   ['m_melt_button']             = 'Presiona ~INPUT_PICKUP~ para fundir rocas',
 
+  -- drugs
+  ['d_pickpbc']                 = 'Presiona ~INPUT_PICKUP~ para cocinar PBC',
+  ['d_deliver_pbc']             = "Presiona ~INPUT_PICKUP~ para vender PBC",
+  ['d_coke']                    = 'Cocaína',
+  ['d_pbc']                     = 'PBC',
+
   -- Slaughterer
   ['s_slaughter_locker']        = 'Vestuario de carnicero',
   ['s_hen']                     = 'Carnicería',
