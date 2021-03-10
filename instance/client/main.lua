@@ -203,7 +203,7 @@ Citizen.CreateThread(function()
 			if NetworkIsPlayerActive(player) then
 				local otherPlayerPed = GetPlayerPed(player)
 				SetEntityVisible(otherPlayerPed, false, false)
-				SetEntityNoCollisionEntity(playerPed, otherPlayerPed, false)
+				--SetEntityNoCollisionEntity(playerPed, otherPlayerPed, false)
 			end
 		end
 	end
@@ -219,11 +219,11 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0) -- must be run every frame
 
 		if insideInstance then
-			SetVehicleDensityMultiplierThisFrame(0.0)
-			SetParkedVehicleDensityMultiplierThisFrame(0.0)
+			--SetVehicleDensityMultiplierThisFrame(0.0)
+			--SetParkedVehicleDensityMultiplierThisFrame(0.0)
 
-			local pos = GetEntityCoords(PlayerPedId())
-			RemoveVehiclesFromGeneratorsInArea(pos.x - 900.0, pos.y - 900.0, pos.z - 900.0, pos.x + 900.0, pos.y + 900.0, pos.z + 900.0)
+			--local pos = GetEntityCoords(PlayerPedId())
+			--RemoveVehiclesFromGeneratorsInArea(pos.x - 900.0, pos.y - 900.0, pos.z - 900.0, pos.x + 900.0, pos.y + 900.0, pos.z + 900.0)
 		else
 			Citizen.Wait(500)
 		end

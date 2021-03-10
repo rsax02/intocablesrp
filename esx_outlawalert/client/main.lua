@@ -197,3 +197,28 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
+
+RegisterNetEvent('esx_outlawalert:blackNotify')
+AddEventHandler('esx_outlawalert:blackNotify',function(targetCoords,street)
+	if isPlayerWhitelisted then
+		ESX.ShowNotification('Hay demasiado olor a estupefacientes en ~y~'..street)
+		local alpha = 250
+		local gunshotBlip = AddBlipForRadius(targetCoords.x, targetCoords.y, targetCoords.z, Config.BlipGunRadius)
+
+		SetBlipHighDetail(gunshotBlip, true)
+		SetBlipColour(gunshotBlip, 1)
+		SetBlipAlpha(gunshotBlip, alpha)
+		SetBlipAsShortRange(gunshotBlip, true)
+
+		while alpha ~= 0 do
+			Citizen.Wait(Config.BlipGunTime * 4)
+			alpha = alpha - 1
+			SetBlipAlpha(gunshotBlip, alpha)
+
+			if alpha == 0 then
+				RemoveBlip(gunshotBlip)
+				return
+			end
+		end
+	end
+end)

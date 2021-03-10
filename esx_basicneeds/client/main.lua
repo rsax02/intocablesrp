@@ -12,6 +12,7 @@ end)
 AddEventHandler('esx_basicneeds:resetStatus', function()
 	TriggerEvent('esx_status:set', 'hunger', 500000)
 	TriggerEvent('esx_status:set', 'thirst', 500000)
+	TriggerEvent('esx_status:set', 'stress', 0)
 end)
 
 RegisterNetEvent('esx_basicneeds:healPlayer')
@@ -51,20 +52,35 @@ AddEventHandler('esx_status:loaded', function(status)
 		status.remove(75)
 	end)
 
-	Citizen.CreateThread( function()
-		while true do
-			Citizen.Wait(500)
-			ResetPlayerStamina(PlayerId())
-		end
+	TriggerEvent('esx_status:registerStatus', 'stress', 0, '#cadfff', function(status)
+		return false
+	end, function(status)
+		local work = false
+		TriggerEvent('esx_jobs:onDuty',function(working)
+			if working==true then
+				status.add(250)
+				work=true
+			end
+		end)
+		TriggerEvent('esx_customJobs:isWorking',function(working)
+			if working==true then
+				status.add(280)
+				work=true
+			end
+		end)
+		if not work then status.remove(470) end
 	end)
 
 	Citizen.CreateThread(function()
 		while true do
 			Citizen.Wait(1000)
 
+			ResetPlayerStamina(PlayerId())
+
 			local playerPed  = PlayerPedId()
 			local prevHealth = GetEntityHealth(playerPed)
 			local health     = prevHealth
+			local stressVal  = 0
 
 			TriggerEvent('esx_status:getStatus', 'hunger', function(status)
 				if status.val == 0 then
@@ -86,6 +102,21 @@ AddEventHandler('esx_status:loaded', function(status)
 				end
 			end)
 
+			TriggerEvent('esx_status:getStatus', 'stress', function(status)
+				stressVal = status.getPercent()
+			end)
+			if stressVal>=85 then
+				if stressVal >= 95 then
+					health=health-4
+				end
+				DoScreenFadeOut(400)
+				while not IsScreenFadedOut() do
+					Citizen.Wait(15)
+				end
+				Citizen.Wait(900)
+				DoScreenFadeIn(400)
+				Citizen.Wait(1500)
+			end
 			if health ~= prevHealth then
 				SetEntityHealth(playerPed, health)
 			end

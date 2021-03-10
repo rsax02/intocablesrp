@@ -53,7 +53,6 @@ ClConfig.CarBlacklisted         = {
 	[20] = { vehicle = "VALKYRIE", ban = false },
 	[21] = { vehicle = "VALKYRIE2", ban = false },
 	[22] = { vehicle = "VOLATUS", ban = false },
-	[23] = { vehicle = "BULLDOZER", ban = false },
 	[24] = { vehicle = "CUTTER", ban = false },
 	[25] = { vehicle = "DUMP", ban = false },
 	[26] = { vehicle = "HANDLER", ban = false },

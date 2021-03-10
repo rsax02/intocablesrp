@@ -240,10 +240,10 @@ function OpenPropertyMenu(property)
 	else
 		if not Config.EnablePlayerManagement then
 			table.insert(elements, {label = _U('buy').." por <span style='color:green;'>$"..property.price.."</span>", value = 'buy'})
-			table.insert(elements, {label = _U('rent').." por <span style='color:green;'>$"..(property.price/200).."</span>", value = 'rent'})
+			table.insert(elements, {label = _U('rent').." por <span style='color:green;'>$"..(ESX.Math.GroupDigits(property.price/200)).."</span>", value = 'rent'})
 		end
 
-		table.insert(elements, {label = _U('visit'), value = 'visit'})
+		--table.insert(elements, {label = _U('visit'), value = 'visit'})
 	end
 
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'property', {
@@ -256,7 +256,21 @@ function OpenPropertyMenu(property)
 		if data.current.value == 'enter' then
 			TriggerEvent('instance:create', 'property', {property = property.name, owner = ESX.GetPlayerData().identifier})
 		elseif data.current.value == 'leave' then
-			TriggerServerEvent('esx_property:removeOwnedProperty', property.name)
+			local elements2 = {}
+			table.insert(elements2,{label="Si",value="yes"})
+			table.insert(elements2,{label="No",value="no"})
+			ESX.UI.Menu.Open('default',GetCurrentResourceName(),'left',{
+				title='Dejar la propiedad?',
+				align='top-left',
+				elements=elements2
+			},function(data2,menu2)
+				if data2.current.value=="yes" then
+					TriggerServerEvent('esx_property:removeOwnedProperty', property.name)
+				end
+				menu2.close()
+			end,function(data2,menu2)
+				menu2.close()
+			end)
 		elseif data.current.value == 'buy' then
 			TriggerServerEvent('esx_property:buyProperty', property.name)
 		elseif data.current.value == 'rent' then
@@ -339,7 +353,22 @@ function OpenGatewayOwnedPropertiesMenu(property)
 				TriggerEvent('instance:create', 'property', {property = data.current.value, owner = ESX.GetPlayerData().identifier})
 				ESX.UI.Menu.CloseAll()
 			elseif data2.current.value == 'leave' then
-				TriggerServerEvent('esx_property:removeOwnedProperty', data.current.value)
+				local elements2={}
+				table.insert(elements2,{label="Si",value="yes"})
+				table.insert(elements2,{label="No",value="no"})
+				ESX.UI.Menu.Open('default',GetCurrentResourceName(),'left',{
+					title='Dejar la propiedad?',
+					align='top-left',
+					elements=elements2
+				},function(data2,menu2)
+					if data2.current.value=="yes" then
+						TriggerServerEvent('esx_property:removeOwnedProperty', data.current.value)
+					else
+						menu2.close()
+					end
+				end,function(data2,menu2)
+					menu2.close()
+				end)
 			end
 		end, function(data2, menu2)
 			menu2.close()
@@ -410,7 +439,7 @@ function OpenRoomMenu(property, owner)
 	
 	if CurrentPropertyOwner == owner then
 		table.insert(elements, {label = "Inventario", value = "property_inventory"})
-		local elements = {{label = _U('invite_player'),  value = 'invite_player'}}
+		table.insert(elements, {label = _U('invite_player'),  value = 'invite_player'})
 	end
 
 	--table.insert(elements, {label = _U('remove_object'),  value = 'room_inventory'})

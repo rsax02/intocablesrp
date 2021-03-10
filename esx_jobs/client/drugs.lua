@@ -19,7 +19,7 @@ Config.Jobs.drugs={
 				{
 					name = "PBC",
 					db_name = "pbc",
-					time = 3,
+					time = 2,
 					max = 500,
 					add = 1,
 					remove = 1,
@@ -39,14 +39,14 @@ Config.Jobs.drugs={
             Duty=true,
 			Blip = true,
 			Name = "Zona Roja",
-			Type = "work",
+			Type = "delivery",
 			Item = {
 				{
 					name = _U("delivery"),
-					time = 2,
+					time = 3,
 					remove = 1,
 					max = 500, -- if not present, probably an error at itemQtty >= item.max in esx_jobs_sv.lua
-					price = 14,
+					price = 15,
 					requires = "pbc",
 					requires_name = _U("d_pbc"),
 					drop = 100

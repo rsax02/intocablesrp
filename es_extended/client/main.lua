@@ -373,6 +373,25 @@ AddEventHandler('esx:deleteVehicle', function(plate, bypass)
 	end
 end)
 
+local blips,blipList = false,{}
+
+RegisterNetEvent('esx:toggleBlips')
+AddEventHandler('esx:toggleBlips',function()
+	if not blips then
+		for vehicle in EnumerateVehicles() do
+			local blip = AddBlipForEntity(vehicle)
+			SetBlipSprite(blip,56)
+			table.insert(blipList,blip)
+		end
+		blips=true
+	else 
+		for k,v in pairs(blipList) do
+			RemoveBlip(v)
+		end
+		blips=false
+	end
+end)
+
 --[[RegisterNetEvent('esx:deleteVehicle')
 AddEventHandler('esx:deleteVehicle', function(radius)
 	local playerPed = PlayerPedId()

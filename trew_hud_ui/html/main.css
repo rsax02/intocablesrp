@@ -66,6 +66,7 @@ div.separator { display: block; clear: both; width: 100%; }
 /*.info.player #status ul li#health span { background: linear-gradient(180deg, #ff0000 0%, #aa0000 100%); }*/
 /*.info.player #status ul li#armor span { background: linear-gradient(180deg, #0bcfe6 0%, #0aa3b5 100%); }*/
 .info.player #status ul li#drunk span { background: linear-gradient(180deg, #A001DB 0%, #A001DB 100%); }
+.info.player #status ul li#stress span { background: linear-gradient(180deg, #b30000 0%, #ffee00 100%); }
 /*.info.player #status ul li#stamina span { background: linear-gradient(180deg, #ffb700 0%, #e0a102 100%); }*/
 .info.player #status ul li#hunger span { background: linear-gradient(180deg, #ff8000 0%, #cd6700 100%); }
 .info.player #status ul li#thirst span { background: linear-gradient(180deg, #00c3ff 0%, #008fbb 100%); }

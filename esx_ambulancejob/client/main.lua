@@ -101,7 +101,7 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 
 		if IsDead then
-			local ped = PlayerPedId()
+			local ped = playerPed
 			local player, distance = ESX.Game.GetClosestPlayer()
 			DisableAllControlActions(0)
 			EnableControlAction(0, Keys['G'], true)
@@ -165,6 +165,110 @@ AddEventHandler('esx_ambulancejob:useItem', function(itemName)
 		end)
 	end
 end)
+
+local Beds, CurrentBed, OnBed,pos = {'v_med_bed2', 'v_med_bed1', 'v_med_emptybed'}, nil, false,2
+
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(1000)
+
+		if not OnBed then
+			local PlayerPed = playerPed
+			local PlayerCoords = GetEntityCoords(PlayerPed)
+
+			for k,v in pairs(Beds) do
+				local ClosestBed = GetClosestObjectOfType(PlayerCoords, 1.5, GetHashKey(v), false, false)
+
+				if ClosestBed ~= 0 and ClosestBed ~= nil then
+					CurrentBed = ClosestBed
+					break
+				else
+					CurrentBed = nil
+				end
+			end
+		end
+	end
+end)
+
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(6)
+		if CurrentBed ~= nil then
+			local PlayerPed = playerPed
+			local BedCoords = GetEntityCoords(CurrentBed)
+			if not OnBed then
+
+				Draw3DText({x = BedCoords.x, y = BedCoords.y, z = (BedCoords.z+1)}, 'Presiona ~g~[E] ~w~para recostarte en la camilla', 0.35)
+			else 
+				Draw3DText({x = BedCoords.x, y = BedCoords.y, z = (BedCoords.z+1.3)}, 'Presiona ~g~[E] ~w~para cambiar de posicion', 0.35)
+				Draw3DText({x = BedCoords.x, y = BedCoords.y, z = (BedCoords.z+1.2)}, 'Presiona ~g~[X] ~w~para levantarte', 0.35)
+			end
+			if IsControlJustReleased(0, 38) then--Here
+				if pos == 2 then
+					local BedCoords, BedHeading = GetEntityCoords(CurrentBed), GetEntityHeading(CurrentBed)
+
+					LoadAnimSet('missfbi1')
+
+					SetEntityCoords(PlayerPed, BedCoords)
+					SetEntityHeading(PlayerPed, (BedHeading+180))
+					TaskPlayAnim(PlayerPed, 'missfbi1', 'cpr_pumpchest_idle', 8.0, -8.0, -1, 1, 0, false, false, false)
+					--TaskPlayAnim(PlayerPed, 'anim@gangops@morgue@table@', 'ko_front', 8.0, -8.0, -1, 1, 0, false, false, false)
+					--FreezeEntityPosition(PlayerPed,true)
+					--TaskStartScenarioAtPosition(PlayerPed, "WORLD_HUMAN_PICNIC", BedCoords.x + 0.0, BedCoords.y + 0.0, BedCoords.z - (-1.4), GetEntityHeading(CurrentBed)*2 + 0.0, 0, true, true)
+					--TaskStartScenarioAtPosition(PlayerPed, "WORLD_HUMAN_SUNBATHE", BedCoords.x + 1.0, BedCoords.y + 1.0, BedCoords.z - (-1.2), GetEntityHeading(CurrentBed) + 3.4, 0, true, true)
+					pos=1
+					OnBed = true
+				else 
+					local BedCoords, BedHeading = GetEntityCoords(CurrentBed), GetEntityHeading(CurrentBed)
+
+					LoadAnimSet('missfbi1')
+
+					SetEntityCoords(PlayerPed, BedCoords)
+					SetEntityHeading(PlayerPed, (BedHeading+180))
+					TaskStartScenarioAtPosition(PlayerPed, "WORLD_HUMAN_PICNIC", BedCoords.x + 0.0, BedCoords.y + 0.0, BedCoords.z - (-1.4), GetEntityHeading(CurrentBed)*2 + 0.0, 0, true, true)
+
+					pos=2
+					OnBed=true
+				end
+			end
+			if IsControlJustReleased(0,105) then--and IsEntityPlayingAnim(playerPed, 'missfbi1', 'cpr_pumpchest_idle', 3) then
+				ClearPedTasks(PlayerPed)
+				FreezeEntityPosition(PlayerPed,false)
+				OnBed=false
+			end
+		else 
+			Citizen.Wait(1000)
+		end
+	end
+end)
+
+function Draw3DText(coords, text, scale)
+	local onScreen, x, y = World3dToScreen2d(coords.x, coords.y, coords.z)
+
+	SetTextScale(scale, scale)
+	SetTextOutline()
+	SetTextDropShadow()
+	SetTextDropshadow(2, 0, 0, 0, 255)
+	SetTextFont(4)
+	SetTextProportional(1)
+	SetTextEntry('STRING')
+	SetTextCentre(1)
+	SetTextColour(255, 255, 255, 215)
+	AddTextComponentString(text)
+	DrawText(x, y)
+end
+
+function LoadAnimSet(AnimDict)
+	if not HasAnimDictLoaded(AnimDict) then
+		RequestAnimDict(AnimDict)
+
+		while not HasAnimDictLoaded(AnimDict) do
+			Citizen.Wait(1)
+		end
+	end
+end
+
+--
 
 function StartDistressSignal()
 	Citizen.CreateThread(function()
@@ -351,7 +455,7 @@ function RemoveItemsAfterRPDeath()
 
 			StopScreenEffect('DeathFailOut')
 			DoScreenFadeIn(800)
-			SetEntityHealth(GetPlayerPed(-1),110) --ESTO ES PARA HACER QUE EL PERSONAJE TENGA POCA VIDA CUANDO REVIVA.
+			SetEntityHealth(PlayerPedId(),110) --ESTO ES PARA HACER QUE EL PERSONAJE TENGA POCA VIDA CUANDO REVIVA.
 		end)
 	end)
 end
@@ -409,7 +513,7 @@ AddEventHandler('esx_ambulancejob:rethecrowsrp2vive', function()
 
 		StopScreenEffect('DeathFailOut')
 		DoScreenFadeIn(800)
-		SetEntityHealth(GetPlayerPed(-1),110) --ESTO ES PARA HACER QUE EL PERSONAJE TENGA POCA VIDA CUANDO REVIVA.
+		SetEntityHealth(PlayerPedId(),110) --ESTO ES PARA HACER QUE EL PERSONAJE TENGA POCA VIDA CUANDO REVIVA.
 	end)
 end)
 

@@ -74,6 +74,7 @@ window.onload = function () {
 				if (config.showHealth == true) { document.querySelector('#health').style.display = 'block'; }
 				if (config.showArmor == true) { document.querySelector('#armor').style.display = 'block'; }
 				if (config.showStamina == true) { document.querySelector('#stamina').style.display = 'block'; }
+				if (config.showStress == true) { document.querySelector('#stress').style.display = 'block'; }
 				if (config.showHunger == true) { document.querySelector('#hunger').style.display = 'block'; }
 				if (config.showThirst == true) { document.querySelector('#thirst').style.display = 'block'; }
 
@@ -172,9 +173,15 @@ window.onload = function () {
 				}
 				else {
 					for (i = 0; i < data.status.length; i++) {
-						if ((data.status[i].name == 'hunger') || (data.status[i].name == 'thirst')) { var statusValue = Math.floor(100 - data.status[i].value); }
-						else { var statusValue = Math.floor(data.status[i].value); }
-						if (document.querySelector('#'+data.status[i].name+' span')) { document.querySelector('#'+data.status[i].name+' span').style.height = statusValue+'%'; }
+						if ((data.status[i].name == 'hunger') || (data.status[i].name == 'thirst')) { 
+							var statusValue = Math.floor(100 - data.status[i].value); 
+							}
+						else { 
+							var statusValue = Math.floor(data.status[i].value); 
+							}
+						if (document.querySelector('#'+data.status[i].name+' span')) { 
+							document.querySelector('#'+data.status[i].name+' span').style.height = statusValue+'%'; 
+							}
 						if (statusValue <= 35) {
 							if (document.querySelector('#'+data.status[i].name)) {
 								if (document.querySelector('#'+data.status[i].name).classList.contains('dying') == false) {
@@ -217,11 +224,6 @@ window.onload = function () {
 					
 				}
 			},
-
-
-
-
-
 
 			updateVehicle: function(data) {
 
@@ -276,18 +278,10 @@ window.onload = function () {
 
 					}
 
-
-
-
 					var previousGear = document.querySelector('#vehicle-gear span').innerHTML;
 					var currentGear = data.gear;
 					if (previousGear != currentGear) { document.querySelector('#vehicle-gear').classList.add('pulse') }
 					saferInnerHTML(document.querySelector('#vehicle-gear span'), data.gear);
-
-
-
-
-
 
 					var speedometerCircle = document.querySelector('#progress-speed svg circle.speed');
 					var speedPercentage = Math.floor(Math.floor(data.speed*100)/data.config.maxSpeed);
@@ -305,31 +299,13 @@ window.onload = function () {
 					document.querySelector('#progress-speed svg circle.speed').style.strokeDashoffset = data.nail;
 					saferInnerHTML(document.querySelector('#vehicle-speed span'), data.speed);
 
-
-
-
-
-
-
-
-
-
-
 					if (vehicleCruiser.classList.contains(data.cruiser) == false) {
 						vehicleCruiser.classList.remove('on','off');
 						vehicleCruiser.classList.add(data.cruiser);
 					}
 
-
-
-
 					if (data.siren == true) { document.querySelector('#vehicle-gear').classList.add('pulsing'); }
 					else { document.querySelector('#vehicle-gear').classList.remove('pulsing'); }
-
-
-
-
-
 
 					if (vehicleLights.classList.contains(data.lights) == false) {
 						vehicleLights.classList.remove('normal','high','off');
@@ -338,14 +314,6 @@ window.onload = function () {
 						if (data.lights == 'high') { vehicleLights.querySelector('i img').src = 'img/vehicle-lights-high.png'; }
 						else { vehicleLights.querySelector('i img').src = 'img/vehicle-lights.png'; }
 					}
-
-
-
-
-
-
-
-
 
 
 					if (vehicleSignals.classList.contains(data.signals) == false) {
@@ -375,17 +343,6 @@ window.onload = function () {
 
 					}
 					
-					
-
-
-
-
-
-
-
-
-
-
 					vehicleFuel.querySelector('span').style.height = data.fuel+'%';
 
 					if (data.fuel <= 35) {
@@ -442,34 +399,7 @@ window.onload = function () {
 					sound.setAttribute('src', soundFile);
 					sound.play();
 				}
-
-
 			},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			
-
-
-
-
-
-
-
-
 		};
 
 		document.querySelectorAll('.icon i').addMultiListener('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () { this.parentElement.classList.remove('pulse'); this.parentElement.classList.remove('shooting'); });
@@ -477,8 +407,6 @@ window.onload = function () {
 		document.querySelectorAll('.info.vehicle').addMultiListener('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
 			this.classList.remove('fadeOut', 'fadeIn');
 		});
-
-
 
 		window.addEventListener('message', function(event) {
 			eventCallback[event.data.action](event.data);

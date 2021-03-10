@@ -7,6 +7,7 @@ local currentDelivery = nil
 local blockVehicle = false
 local lastDelivery, cooldown = nil, GetGameTimer()
 local currentIndex = 0
+isWorking = false
 
 Citizen.CreateThread(function()
     while ESX == nil do
@@ -35,6 +36,7 @@ AddEventHandler('esx:setJob', function(job)
     PlayerData.job = job
     ESX.PlayerData.job=job
     onDuty = false
+    isWorking=false
     if(deliveryblip)then
     RemoveBlip(deliveryblip)
     end
@@ -97,6 +99,7 @@ function OpenCloakRoom()
                 TriggerEvent('skinchanger:loadSkin', skin)
             end)
             onDuty = false
+            isWorking=false
             if deliveryblip then
             RemoveBlip(deliveryblip)
             end
@@ -108,6 +111,7 @@ function OpenCloakRoom()
                 TriggerEvent('skinchanger:loadClothes', skin, skin.sex == 0 and jobSkin.skin_male or jobSkin.skin_female)
             end)
             onDuty = true
+            isWorking=true
         end
         menu.close()
         ESX.UI.Menu.CloseAll()
@@ -386,4 +390,8 @@ Citizen.CreateThread(function()
             Citizen.Wait(1500)
         end
     end
+end)
+
+AddEventHandler('esx_customJobs:isWorking',function(cb)
+    cb(isWorking)
 end)

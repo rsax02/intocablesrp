@@ -19,7 +19,7 @@ Config.Zones = {
   },
 
   ["ambulance"] = {
-    Pos = { x = 339.41, y = -582.31, z = 28.0 },
+    Pos = { x = -431.79, y = -323.67, z = 34.00 },
     Size = { x = 2.0, y = 2.0, z = 1.5 },
     Color = { r = 0, g = 255, b = 0 },
     Type = 27

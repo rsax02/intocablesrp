@@ -2,6 +2,7 @@ local zones = {
 	{x = -34.67, y = -1094.42, z = 25.42, size = 30.00}, -- LOW END
 	{x=-327.8,y=-928.2,z=30.08,size=50.00}, -- GARAGE
 	{x = -530.65, y = -228.96, z = 36.7, size = 36.00}, -- WORK jobs
+    {x=-1719.69,y=-261.04,z=52.3,size=120.00},
 	{x=245.61, y= -1373.46, z=32.74, size=20} -- WORK
 }
 
@@ -12,7 +13,7 @@ local enabledZone = true
 
 local mp_pointing = false
 local keyPressed = false
-local ped, inVehicle, dead, coords = nil, false, false
+ped, inVehicle, dead, coords = nil, false, false
 local crouched = false
 local tags = {}
 
@@ -40,6 +41,8 @@ Citizen.CreateThread(function()
     while true do
 	N_0x4757f00bc6323cfe(GetHashKey("WEAPON_UNARMED"), 0.55) 
 	N_0x4757f00bc6323cfe(GetHashKey("WEAPON_KNIFE"), 0.55) 
+    N_0x4757f00bc6323cfe(GetHashKey("WEAPON_NIGHTSTICK"), 0.25)
+    N_0x4757f00bc6323cfe(-1553120962, 0.0)
 	
 	Wait(1)
     end

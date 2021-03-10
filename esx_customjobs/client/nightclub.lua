@@ -20,7 +20,7 @@ Citizen.CreateThread(function()
         Wait(5)
         local ped = PlayerPedId()
         if not IsPedDeadOrDying(ped) then
-            if IsControlJustReleased(0, 105) then
+            if IsControlJustReleased(0, 105) and not IsEntityPlayingAnim(ped, 'missfbi1', 'cpr_pumpchest_idle', 3) then
                 ClearPedTasks(ped)
             end
 

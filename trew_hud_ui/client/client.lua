@@ -327,6 +327,15 @@ function setInfo(info)
 		}
 	end)
 
+	showPlayerStatus = (showPlayerStatus+1)
+
+	TriggerEvent('esx_status:getStatus', 'stress', function(status)
+		playerStatus['status'][showPlayerStatus] = {
+			name = 'stress',
+			value = math.floor(status.getPercent())
+		}
+	end)
+
 	if showPlayerStatus > 0 then
 		SendNUIMessage(playerStatus)
 	end
@@ -342,18 +351,18 @@ Citizen.CreateThread(function()
 	    RequestAnimDict('mp_facial')
 
 	    while true do
-	        Citizen.Wait(300)
+	        Citizen.Wait(500)
 
 	        for _,player in ipairs(GetActivePlayers()) do
 	            local boolTalking = NetworkIsPlayerTalking(player)
 
-	            if player ~= playerID then
+	            --if player ~= playerID then
 	                if boolTalking then
-	                    PlayFacialAnim(GetPlayerPed(player), 'mic_chatter', 'mp_facial')
+	                    --PlayFacialAnim(GetPlayerPed(player), 'mic_chatter', 'mp_facial')
 	                elseif not boolTalking then
-	                    PlayFacialAnim(GetPlayerPed(player), 'mood_normal_1', 'facials@gen_male@variations@normal')
+	                   -- PlayFacialAnim(GetPlayerPed(player), 'mood_normal_1', 'facials@gen_male@variations@normal')
 	                end
-	            end
+	            --end
 	        end
 	    end
 

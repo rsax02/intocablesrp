@@ -114,16 +114,22 @@ function OpenMobileAmbulanceActionsMenu()
 		}
 	}, function(data, menu)
 		if data.current.value == 'citizen_interaction' then
-			ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'citizen_interaction', {
-				title    = _U('ems_menu_title'),
-				align    = 'top-left',
-				elements = {
+			local elements = {
 					{label = _U('ems_menu_revive'), value = 'revive'},
 					{label = _U('ems_menu_small'), value = 'small'},
 					{label = _U('ems_menu_big'), value = 'big'},
 					{label = _U('ems_menu_putincar'), value = 'put_in_vehicle'},
 					{label = 'Facturación',       value = 'billing'},
 				}
+				
+			if ESX.PlayerData.job.grade>=2 then
+				table.insert(elements,{label="Realizar cirugia", value="cirugy"})
+			end
+
+			ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'citizen_interaction', {
+				title    = _U('ems_menu_title'),
+				align    = 'top-left',
+				elements = elements
 			}, function(data, menu)
 				if IsBusy then return end
 
@@ -132,8 +138,19 @@ function OpenMobileAmbulanceActionsMenu()
 				if closestPlayer == -1 or closestDistance > 1.0 then
 					ESX.ShowNotification(_U('no_players'))
 				else
-
-					if data.current.value == 'revive' then
+					if data.current.value=="cirugy" then
+						local closestId = GetPlayerServerId(closestPlayer)
+						ESX.UI.Menu.Open('default',GetCurrentResourceName(),'player_list',{
+							title="Jugador:",
+							align="top-left",
+							elements={{label=GetPlayerName(closestPlayer).." Id "..closestId}}
+						},function(data2,menu2)
+							TriggerServerEvent('esx_ambulancejob:cirugy',closestId)
+							menu2.close()
+						end,function(data2,menu2)
+							menu2.close()
+						end)
+					elseif data.current.value == 'revive' then
 
 						IsBusy = true
 
@@ -362,7 +379,7 @@ function OpenStockMenu()
 		{label = _U('deposit_stock'),  value = 'put_stock'},
 	}
 
-	if Config.EnablePlayerManagement and (ESX.PlayerData.job.grade_name == 'boss' or ESX.PlayerData.job.grade_name == 'supervisor')then
+	if Config.EnablePlayerManagement and (ESX.PlayerData.job.grade>=2)then
 		table.insert(elements, {label = _U('withdraw_stock'), value = 'get_stock'})
 	end
 

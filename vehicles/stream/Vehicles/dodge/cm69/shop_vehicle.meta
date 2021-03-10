@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ShopVehicleDataArray>
+	<Vehicles>
+		<Item>
+			<lockHash>CU_CN69_VEH</lockHash>
+			<modelNameHash>cn69</modelNameHash>
+			<cost value="100"/>
+			<textLabel>CN69</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_CD69_VEH</lockHash>
+			<modelNameHash>cd69</modelNameHash>
+			<cost value="100"/>
+			<textLabel>CN69</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+		<Item>
+			<lockHash>CU_CM69_VEH</lockHash>
+			<modelNameHash>cd69</modelNameHash>
+			<cost value="100"/>
+			<textLabel>CN69</textLabel>
+			<vehicleMods></vehicleMods>
+		</Item>
+	</Vehicles>
+</ShopVehicleDataArray>

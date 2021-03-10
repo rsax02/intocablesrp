@@ -27,11 +27,11 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
+	loadAnimDict("rcmjosh4")
+	loadAnimDict("reaction@intimidation@cop@unarmed")
+	loadAnimDict("reaction@intimidation@1h")
 	while true do
 		Citizen.Wait(2)
-		loadAnimDict("rcmjosh4")
-		loadAnimDict("reaction@intimidation@cop@unarmed")
-		loadAnimDict("reaction@intimidation@1h")
 		
 		if not IsEntityInAir(ped) and GetEntityAttachedTo(ped) == 0 then
 			if PlayerData.job ~= nil and PlayerData.job.name == 'police' then

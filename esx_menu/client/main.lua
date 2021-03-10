@@ -19,7 +19,8 @@ function OpenCivilianActionsMenu()
 			{label = 'Vehiculo', value = 'vehiclemenu'},
 			{label = 'Facturas', value = 'billing'},
 			{label = 'IntoCoins', value='coins'},
-			{label = 'Regalos', value='gift'}
+			{label = 'Regalos', value='gift'},
+			{label = 'Remover strike', value='strike'}
 	   }
    }, function(data, menu)
 		if data.current.value == 'gest' then
@@ -40,9 +41,23 @@ function OpenCivilianActionsMenu()
 			OpenDonationMenu()
 		elseif data.current.value=="gift"then
 			OpenGiftMenu()
+		elseif data.current.value=="strike" then
+			OpenStrikesMenu()
 		end
 	end, function(data, menu)
 		menu.close()
+	end)
+end
+
+function OpenStrikesMenu()
+	ESX.UI.Menu.CloseAll()
+	ESX.TriggerServerCallback('esx_admin:getStrikes',function(elements)
+		ESX.UI.Menu.Open('list',GetCurrentResourceName(), 'strike_list', elements,function(data,menu)
+			TriggerServerEvent('esx_admin:removeStrike',data.value)
+			menu.close()
+		end,function(data,menu)
+			menu.close()
+		end)
 	end)
 end
 
@@ -183,6 +198,7 @@ function openGestMenu()
 			{label = 'Cargar', value = 'carry'},
 			{label = 'Chiflar', value = 'chifle'},
 			{label = 'Cambiar de asiento', value = 'changeseat'},
+			{label = 'Quitar chaleco', value='removebullet'}
 	   }
    }, function(data, menu)
 		if data.current.value == 'carry' then
@@ -191,6 +207,16 @@ function openGestMenu()
 			TriggerEvent("SeatShuffle")
 		elseif data.current.value == 'chifle' then
 			ExecuteCommand("e whistle2")
+		elseif data.current.value=='removebullet' then
+			local ped = PlayerPedId()
+			if GetPedArmour(ped)>75 then
+				TriggerServerEvent('esx_factions:returnArmour')
+				ESX.Streaming.RequestAnimDict('anim@heists@ornate_bank@grab_cash', function()
+					TaskPlayAnim(ped, 'anim@heists@ornate_bank@grab_cash', 'intro', 3.0, 3.0, 1600, 51, 0, false, false, false)
+					Citizen.Wait(750)
+					SetPedArmour(ped, 0)
+				end)
+			end
 		end
 	end, function(data, menu)
 		OpenCivilianActionsMenu()
@@ -320,7 +346,7 @@ local Xenon = function(current)
 			{label="Amarillo",value=5},
 			{label="Dorado",value=6},
 			{label="Anaranjado",value=7},
-			{label="rojo",value=8},
+			{label="Rojo",value=8},
 			{label="Rosa claro",value=9},
 			{label="Rosa fuerte",value=10},
 			{label="Violeta",value=11},

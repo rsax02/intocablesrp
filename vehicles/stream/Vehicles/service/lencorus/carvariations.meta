@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CVehicleModelInfoVariation>
+  <variationData>
+  	<Item>
+      <modelName>lencoSAS</modelName>
+      <colors>
+         <Item>
+          <indices content="char_array">
+            15
+            12 
+            12 
+            156 
+          </indices>
+          <liveries>
+		  <Item value="true" />
+          <Item value="false" />
+		  </liveries>
+        </Item>
+		<Item>
+          <indices content="char_array">
+            15
+            12
+            12 
+            156 
+          </indices>
+           <liveries>
+		  <Item value="false" />
+          <Item value="true" />
+		  </liveries>
+        </Item>
+      </colors>
+      <kits>
+      </kits>
+      <windowsWithExposedEdges />
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police Guv Plate</Name>
+            <Value value="100" />
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="0" />
+      <sirenSettings value="1" />
+    </Item>
+		<Item>
+      <modelName>lencoSASR</modelName>
+      <colors>
+         <Item>
+          <indices content="char_array">
+            15
+            12 
+            12 
+            156 
+          </indices>
+          <liveries>
+		  <Item value="true" />
+          <Item value="false" />
+		  </liveries>
+        </Item>
+		<Item>
+          <indices content="char_array">
+            15
+            12
+            12 
+            156 
+          </indices>
+           <liveries>
+		  <Item value="false" />
+          <Item value="true" />
+		  </liveries>
+        </Item>
+      </colors>
+      <kits>
+      </kits>
+      <windowsWithExposedEdges />
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police Guv Plate</Name>
+            <Value value="100" />
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="0" />
+      <sirenSettings value="1" />
+    </Item>
+		<Item>
+      <modelName>lencoGEO</modelName>
+      <colors>
+         <Item>
+          <indices content="char_array">
+            15
+            12 
+            12 
+            156 
+          </indices>
+          <liveries>
+		  <Item value="true" />
+          <Item value="false" />
+		  </liveries>
+        </Item>
+		<Item>
+          <indices content="char_array">
+            15
+            12
+            12 
+            156 
+          </indices>
+           <liveries>
+		  <Item value="false" />
+          <Item value="true" />
+		  </liveries>
+        </Item>
+      </colors>
+      <kits>
+      </kits>
+      <windowsWithExposedEdges />
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police Guv Plate</Name>
+            <Value value="100" />
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="0" />
+      <sirenSettings value="1" />
+    </Item>
+		<Item>
+      <modelName>lencoGSG9</modelName>
+      <colors>
+         <Item>
+          <indices content="char_array">
+            15
+            12 
+            12 
+            156 
+          </indices>
+          <liveries>
+		  <Item value="true" />
+          <Item value="false" />
+		  </liveries>
+        </Item>
+		<Item>
+          <indices content="char_array">
+            15
+            12
+            12 
+            156 
+          </indices>
+           <liveries>
+		  <Item value="false" />
+          <Item value="true" />
+		  </liveries>
+        </Item>
+      </colors>
+      <kits>
+      </kits>
+      <windowsWithExposedEdges />
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police Guv Plate</Name>
+            <Value value="100" />
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="0" />
+      <sirenSettings value="1" />
+    </Item>
+		<Item>
+      <modelName>lencoGIGN</modelName>
+      <colors>
+         <Item>
+          <indices content="char_array">
+            15
+            12 
+            12 
+            156 
+          </indices>
+          <liveries>
+		  <Item value="true" />
+          <Item value="false" />
+		  </liveries>
+        </Item>
+		<Item>
+          <indices content="char_array">
+            15
+            12
+            12 
+            156 
+          </indices>
+           <liveries>
+		  <Item value="false" />
+          <Item value="true" />
+		  </liveries>
+        </Item>
+      </colors>
+      <kits>
+      </kits>
+      <windowsWithExposedEdges />
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police Guv Plate</Name>
+            <Value value="100" />
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="0" />
+      <sirenSettings value="1" />
+    </Item>
+		<Item>
+      <modelName>lencoSWAT</modelName>
+      <colors>
+         <Item>
+          <indices content="char_array">
+            15
+            12 
+            12 
+            156 
+          </indices>
+          <liveries>
+		  <Item value="true" />
+          <Item value="false" />
+		  </liveries>
+        </Item>
+		<Item>
+          <indices content="char_array">
+            15
+            12
+            12 
+            156 
+          </indices>
+           <liveries>
+		  <Item value="false" />
+          <Item value="true" />
+		  </liveries>
+        </Item>
+      </colors>
+      <kits>
+      </kits>
+      <windowsWithExposedEdges />
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police Guv Plate</Name>
+            <Value value="100" />
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="0" />
+      <sirenSettings value="1" />
+    </Item>
+		<Item>
+      <modelName>lencoRUS</modelName>
+      <colors>
+         <Item>
+          <indices content="char_array">
+            15
+            12 
+            12 
+            156 
+          </indices>
+          <liveries>
+		  <Item value="true" />
+          <Item value="false" />
+		  </liveries>
+        </Item>
+		<Item>
+          <indices content="char_array">
+            15
+            12
+            12 
+            156 
+          </indices>
+           <liveries>
+		  <Item value="false" />
+          <Item value="true" />
+		  </liveries>
+        </Item>
+      </colors>
+      <kits>
+      </kits>
+      <windowsWithExposedEdges />
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Police Guv Plate</Name>
+            <Value value="100" />
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="0" />
+      <sirenSettings value="1" />
+    </Item>
+	</variationData>
+</CVehicleModelInfoVariation>

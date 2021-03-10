@@ -28,6 +28,21 @@ Config.Zones = {
 		}
 	},
 
+	HospitalPharmacy = {
+		Blip=false,
+		Sprite=403,
+		Color=1,
+		Size=1.0,
+		Name="InkaFarma",
+		Items={
+			{name="bandage", label="Venda", type="money", amount=110, level=1,hospital=true}
+		},
+		Jobs=nil,
+		Pos={
+			{x=-489.07, y=-339.77, z= 41.32, time='8-22'},
+		}
+	},
+
 	Cine ={
 		Blip=true,
 		Sprite=135,
@@ -42,6 +57,7 @@ Config.Zones = {
 			{x=341.72,y=185.58,z=102.0}
 		}
 	},
+
 	Arcadius ={
 		Blip=false,
 		Sprite=76,
@@ -272,6 +288,22 @@ Config.Zones = {
 		Pos = {
 			{x=-3153.65, y=1054.16, z=19.84, time='8-20' },
 			{x=2748.87, y=3472.31, z=54.68, time='8-20' }
+		}
+	},
+
+	IllegalFactions = {
+		Blip = false,
+		Sprite = 566,
+		Size = 0.9,
+		Color = 81,
+		Name="Punto ilegal",
+		Items = {
+			{name = 'seal', label = 'Cuerdas', type = 'black_money', amount = 2500, level = 15},
+			{name="weapon_switchblade",bullets= 52, label="weapon",type="black_money",amount=65000,level=25},
+		},
+		Jobs={["faction1"]=0},
+		Pos = {
+			{x=2484.75,y=3446.91,z=50.07, time='8-20'},
 		}
 	},
 

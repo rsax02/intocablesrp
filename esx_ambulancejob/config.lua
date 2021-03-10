@@ -14,7 +14,7 @@ local second = 1000
 local minute = 60 * second
 
 Config.EarlyRespawnTimer          = 6 * minute  -- Time til respawn is available
-Config.BleedoutTimer              = 10 * minute -- Time til the player bleeds out
+Config.BleedoutTimer              = 12 * minute -- Time til the player bleeds out
 
 Config.EnablePlayerManagement     = true
 
@@ -26,46 +26,46 @@ Config.RemoveItemsAfterRPDeath    = true
 Config.EarlyRespawnFine           = false
 Config.EarlyRespawnFineAmount     = 5000
 
-Config.RespawnPoint = { coords = vector3(358.79, -567.7, 28.96), heading = 60.0 }
+Config.RespawnPoint = { coords = vector3(-459.19,-283.89,34.91), heading = 196.86 }
 
 Config.Hospitals = {
 
 	CentralLosSantos = {
 
 		Blip = {
-			coords = vector3(363.6, -591.44, 27.7),
+			coords = vector3(-445.25,-312.68,34.09),
 			sprite = 61,
-			scale  = 1.2,
+			scale  = 1.3,
 			color  = 1
 		},
 
 		AmbulanceActions = {
 		--X:327.2  Y:-596.46  Z:28.79
-			vector3(327.2, -596.46, 27.79)
+			vector3(-498.02,-315.74, 41.32)
 		},
 		
 		AmbulanceStock = {
-			vector3(314.7,-589.89,27.79)
+			vector3(-437.81,-307.92, 33.91)
 		},
 		
 		CloakRoom = {
-			vector3(336.22,-580.31,27.79)
+			vector3(-443.62,-310.16, 33.91)
 		},
 
 		Pharmacies = {
-			vector3(353.78, -577.9, 27.7)
+			vector3(-457.12,-310.46,33.91)
 		},
 
 		Vehicles = {
 			{
 			--X:320.0  Y:-541.25   Z:28.74
-				Spawner = vector3(320.0, -541.25, 28.74),
+				Spawner = vector3(-420.33, -334.55, 33.11),
 				InsideShop = vector3(340.68, -561.67, 28.7),
 				Marker = { type = 36, x = 1.0, y = 1.0, z = 1.0, r = 100, g = 50, b = 200, a = 100, rotate = true },
 				SpawnPoints = {
-					{ coords = vector3(321.04, -541.7, 28.7), heading = 170, radius = 4.0 },
-					{ coords = vector3(326.04, -541.7, 28.7), heading = 170, radius = 4.0 },
-					{ coords = vector3(331.04, -541.7, 28.7), heading = 170, radius = 6.0 }
+					{ coords = vector3(-425, -353.62, 33.11 ), heading = 163.87, radius = 4.0 },
+					{ coords = vector3(-425, -353.62, 33.11 ), heading = 163.87, radius = 4.0 },
+					{ coords = vector3(-425, -353.62, 33.11 ), heading = 163.87, radius = 4.0 },
 				}
 			}
 		},

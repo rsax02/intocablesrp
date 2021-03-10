@@ -29,25 +29,6 @@ Config.resourceColor = "15461951"	-- Resource Stopped/Started
 
 
 
-Config.webhooks = {
-	all = "DISCORD_WEBHOOK",
-	chat = "https://discord.com/api/webhooks/783179061102510100/P_XUX7PUhfvTWoNcMapKeTpLiuY3E1s-y-mD-qY7r8WccpLhBS3Ry-aQO4NBvB0AWV2V",
-	joins = "https://discord.com/api/webhooks/783180184441978890/N8lSP44wlnEhUDKN18Pp4r2URtSzjpzP_vgQimW-IWJIfF2zQZYqekpLFSIrva_MD5GG",
-	leaving = "https://discord.com/api/webhooks/783180067345793058/kMlEXXKWJWvotO020niesPxC71F8c7rPNOp-JWzUQYyw067KskGHx0LMjItCvwm4IL0O",
-	deaths = "https://discord.com/api/webhooks/807695829707390976/S-kJsukjpxIB6Q4ibpdKGvorie8DmhWSLgB7m1nBqPF9xGOfx1r6Clvim2USefss1xRg",
-	shooting = "",
-	resources = "",
-	joins2 = "https://discord.com/api/webhooks/783179660031950908/qkLdxhSQCF8XvnifJ8bzjH_8l8QXwftuKNNrErb0XTpnKYdDKDfesjQgivv7Kz-6bu10", -- norm
-	twitter = "https://discord.com/api/webhooks/783179061102510100/P_XUX7PUhfvTWoNcMapKeTpLiuY3E1s-y-mD-qY7r8WccpLhBS3Ry-aQO4NBvB0AWV2V",
-	platepurchase = "https://discord.com/api/webhooks/808610903648894987/rkRx5v6guX4x8MKbHCFJzfmJozU6IkgTZnEbZUI4tMt3NN2M6zC23WXjfs6SoV_8lUqP",
-	perfpurchase = "https://discord.com/api/webhooks/808610664012316722/Sqmi2tu7qAgSNM7-Ja3p2zb3vk-8tsuyCMmPLpAjoTHFKlcZCmgMIe9_c2T5AIj5q_G5",
-	numberpurchase = "https://discord.com/api/webhooks/808610800947167253/_wNOmx7W0l0rVi1N17uTCxOrxLwwEnWyeVirTWMvExkhwaoU-ZZ6QObS4TPKjEtC-qCA",
-	bank = "https://discord.com/api/webhooks/808610325582708767/0AV5ZP8jbRGKh_R6Phsklnbo3lsoF59L5qmy8h8F1ctq0blXjmOWNJn-x353DIMpmdmG",
-	realtimechat = "https://discord.com/api/webhooks/788365802558193664/aGkO_7-DvebtbOUCSHvWJw3BoMHChna0_77vDVCDQQ5sKr0Uq3XT3FAPpurr-yK_dRF9" 
-
-  -- How you add more logs is explained on https://docs.jokedevil.com/JD_logs
-  }
-
 
  --Debug shizzels :D
 Config.debug = false

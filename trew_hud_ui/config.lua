@@ -18,8 +18,8 @@ Config.voice = {
 
 	levels = {
 		default = 6.5, --verde
-		whisper = 26.0, --rojo
-		shout = 15.5, --amarillo
+		whisper = 33.0, --rojo
+		shout = 16.5, --amarillo
 		current = 0
 	},
 	

@@ -43,17 +43,19 @@ Citizen.CreateThread(function()
         ped=PlayerPedId()
         pedId=PlayerId()
         activePlayers=GetActivePlayers()
+        x1, y1, z1 = table.unpack(GetEntityCoords(ped, true))
         for _, id in ipairs(activePlayers) do
             local idPed = GetPlayerPed(id)
             if idPed ~= ped then
-                x1, y1, z1 = table.unpack(GetEntityCoords(ped, true))
                 x2, y2, z2 = table.unpack(GetEntityCoords(idPed, true))
                 distance = math.floor(#(vector3(x1,  y1,  z1)-vector3(x2,  y2,  z2)))
-				playerDistances[id] = distance
+                if distance<=30 then
+				playerDistances[id] = {dist=distance,id=GetPlayerServerId(id)}
 				playerPeds[id] = idPed
+                end
             end
         end
-        Citizen.Wait(1200)
+        Citizen.Wait(1250)
     end
 end)
 
@@ -65,20 +67,22 @@ Citizen.CreateThread(function()
         if(not hide) then
             for _,id in ipairs(activePlayers) do
                 local idPed = playerPeds[id]
-                if v~=pedId and IsEntityVisible(idPed) then
                     if playerDistances[id] then
-                        if (playerDistances[id] < disPlayerNames and HasEntityClearLosToEntity(ped, idPed, 17)) then
-                            x2, y2, z2 = table.unpack(GetEntityCoords(idPed, true))
-                            if NetworkIsPlayerTalking(id) then
-                                DrawText3D(x2, y2, z2+1, GetPlayerServerId(id), 247,124,24)
-                                --DrawMarker(27, x2, y2, z2-0.97, 0, 0, 0, 0, 0, 0, 1.001, 1.0001, 0.5001, 173, 216, 230, 100, 0, 0, 0, 0)
-                            else
-                                DrawText3D(x2, y2, z2+1, GetPlayerServerId(id), 255,255,255)
+                        if IsEntityVisible(idPed) then
+                            if (playerDistances[id].dist < disPlayerNames and HasEntityClearLosToEntity(ped, idPed, 13)) then
+                                x2, y2, z2 = table.unpack(GetEntityCoords(idPed, true))
+                                if NetworkIsPlayerTalking(id) then
+                                    DrawText3D(x2, y2, z2+1, playerDistances[id].id, 247,124,24)
+                                    PlayFacialAnim(idPed, 'mic_chatter', 'mp_facial')
+                                    --DrawMarker(27, x2, y2, z2-0.97, 0, 0, 0, 0, 0, 0, 1.001, 1.0001, 0.5001, 173, 216, 230, 100, 0, 0, 0, 0)
+                                else
+                                    DrawText3D(x2, y2, z2+1, playerDistances[id].id, 255,255,255)
+                                    PlayFacialAnim(idPed, 'mood_normal_1', 'facials@gen_male@variations@normal')
+                                end
+                                sleep=false
                             end
-                            sleep=false
                         end
                     end
-                end
             end
         end
         if(sleep)then

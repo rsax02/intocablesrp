@@ -208,9 +208,24 @@ Citizen.CreateThread(function()
 	AddTextEntry("rmodmi8lb", "BMW i8 lB")
 	AddTextEntry("bvit", "Bugatti Veyron")
 	AddTextEntry("terzo", "lamborghini terzo")
-
-
-
+	AddTextEntry("330p4", "Ferrari 330p4")
+	AddTextEntry("nm_911", "Porsche 911 turbo s")
+    AddTextEntry("nm_918", "Porsche 918 spyder")
+	AddTextEntry("lwgtr", "Nissan GTR lw")
+	AddTextEntry("mi8", "Bmw i8 Lw")
+    AddTextEntry("bj40", "Jeep Bj40")
+	AddTextEntry("turbo33", "Porsche Turbo 33")
+	AddTextEntry("r8lms", "Audi r8 lms")
+	AddTextEntry("paraptor", "Ford Raptor Pandier")
+	AddTextEntry("slaf100", "Ford f100")
+	AddTextEntry("supsnake", "Shelby Mustang gt500")
+	AddTextEntry("18phantom", "Rolls royce phantom")
+	AddTextEntry("p1", "McLaren P1")
+	AddTextEntry("gt17", "Ford GT")
+	AddTextEntry("g63samg", "Mercedes Benz GT63 AMG")
+	AddTextEntry("ms1", "Saleen S1")
+	AddTextEntry("sc18", "Lamborghini sc18")
+	AddTextEntry("dukes3", "Dodge Charger 4x4")
 
  
 

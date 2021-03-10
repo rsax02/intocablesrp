@@ -51,7 +51,8 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 	refreshBlips()
 end)
 
-local ped,coords,isdead,isworking
+local ped,coords,isdead
+local isworking = false
 Citizen.CreateThread(function()
 	while true do
 		ped=PlayerPedId()
@@ -65,7 +66,7 @@ Citizen.CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
+--[[Citizen.CreateThread(function()
 	for k,v in pairs(Config.Jobs.drugs.Zones) do
 		if v.Blip then
 			local blip = AddBlipForCoord(v.Pos.x,v.Pos.y,v.Pos.z)
@@ -80,15 +81,15 @@ Citizen.CreateThread(function()
 			AddTextComponentString(v.Name)
 			EndTextCommandSetBlipName(blip)
 
-			local radius = AddBlipForRadius(v.Pos.x, v.Pos.y, v.Pos.z, Config.Jobs.drugs.BlipInfos.Radius)
+			--local radius = AddBlipForRadius(v.Pos.x, v.Pos.y, v.Pos.z, Config.Jobs.drugs.BlipInfos.Radius)
 			
-			SetBlipHighDetail(radius, true)
-			SetBlipAlpha(radius, 150)
-			SetBlipColour(radius, Config.Jobs.drugs.BlipInfos.Color)
-			SetBlipAsShortRange(radius, true)
+			--SetBlipHighDetail(radius, true)
+			--SetBlipAlpha(radius, 150)
+			--SetBlipColour(radius, Config.Jobs.drugs.BlipInfos.Color)
+			--SetBlipAsShortRange(radius, true)
 		end
 	end
-end)
+end)]]
 
 function showHelpText(s)
     SetTextComponentFormat("STRING")
@@ -129,34 +130,6 @@ function OpenMenu()
 		menu.close()
 	end)
 end
-
-RegisterNetEvent('esx_jobs:pbc')
-AddEventHandler('esx_jobs:pbc', function()
-	RequestAnimSet("MOVE_M@DRUNK@SLIGHTLYDRUNK")
-	while not HasAnimSetLoaded("MOVE_M@DRUNK@SLIGHTLYDRUNK") do
-		Citizen.Wait(0)
-	end
-	local ped = PlayerPedId()
-	TaskStartScenarioInPlace(ped, "WORLD_HUMAN_SMOKING_POT", 0, true)
-	Citizen.Wait(10000)
-	DoScreenFadeOut(1000)
-	Citizen.Wait(1000)
-	ClearPedTasksImmediately(ped)
-	SetTimecycleModifier("spectator5")
-	SetPedMotionBlur(ped, true)
-	SetPedMovementClipset(ped, "MOVE_M@DRUNK@SLIGHTLYDRUNK", true)
-	SetPedIsDrunk(ped, true)
-	DoScreenFadeIn(1000)
-	Citizen.Wait(60000)
-	DoScreenFadeOut(1000)
-	Citizen.Wait(1000)
-	DoScreenFadeIn(1000)
-	ClearTimecycleModifier()
-	ResetScenarioTypesEnabled()
-	ResetPedMovementClipset(ped, 0)
-	SetPedIsDrunk(ped, false)
-	SetPedMotionBlur(ped, false)
-end)
 
 AddEventHandler('esx_jobs:action', function(job, zone,key,drugs)
 	menuIsShowed = true
@@ -268,6 +241,11 @@ AddEventHandler('esx_jobs:action', function(job, zone,key,drugs)
 
 			hintToDisplay = "no hint to display"
 			hintIsShowed = false
+			local coord = GetEntityCoords(PlayerPedId())
+			if zone.Item[1].price<0 then
+				print("a")
+				TriggerServerEvent('esx_outlawalert:blackInProgress',coord,GetStreetNameFromHashKey(GetStreetNameAtCoord(coord.x,coord.y,coord.z)))
+			end
 			TriggerServerEvent('esx_jobs:startWork', key,drugs)
 			isworking=true
 		end
@@ -343,6 +321,28 @@ function refreshBlips()
 			end
 		end
 
+		for k,v in pairs(Config.Jobs.drugs.Zones) do
+			if v.Blip then
+				local blip = AddBlipForCoord(v.Pos.x,v.Pos.y,v.Pos.z)
+				SetBlipSprite  (blip, Config.Jobs.drugs.BlipInfos.Sprite)
+				SetBlipDisplay (blip, 4)
+				SetBlipScale   (blip, 1.0)
+				SetBlipCategory(blip, 3)
+				SetBlipColour  (blip, Config.Jobs.drugs.BlipInfos.Color)
+				SetBlipAsShortRange(blip, true)
+
+				BeginTextCommandSetBlipName("STRING")
+				AddTextComponentString(v.Name)
+				EndTextCommandSetBlipName(blip)
+
+				local radius = AddBlipForRadius(v.Pos.x, v.Pos.y, v.Pos.z, Config.Jobs.drugs.BlipInfos.Radius)
+				
+				SetBlipHighDetail(radius, true)
+				SetBlipAlpha(radius, 120)
+				SetBlipColour(radius, Config.Jobs.drugs.BlipInfos.Color)
+				SetBlipAsShortRange(radius, true)
+			end
+		end
 	end
 end
 
@@ -601,4 +601,8 @@ Citizen.CreateThread(function()
 	-- Tailor
 	RequestIpl("id2_14_during_door")
 	RequestIpl("id2_14_during1")
+end)
+
+AddEventHandler('esx_jobs:onDuty',function(cb)
+	cb(onDuty or isworking)
 end)

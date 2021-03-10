@@ -405,10 +405,10 @@ function StoreOwnedCarsMenu()
 			if valid then
 				if engineHealth < 590 then --antes 990
 					if Config.Main.DamageMult then
-						local apprasial = 50 --math.floor((1000 - engineHealth)/1000*Config.Cars.PoundP*Config.Main.MultAmount)
+						local apprasial = 350 --math.floor((1000 - engineHealth)/1000*Config.Cars.PoundP*Config.Main.MultAmount)
 						RepairVehicle(apprasial, vehicle, vehicleProps)
 					else
-						local apprasial = 50 --math.floor((1000 - engineHealth)/1000*Config.Cars.PoundP)
+						local apprasial = 350 --math.floor((1000 - engineHealth)/1000*Config.Cars.PoundP)
 						RepairVehicle(apprasial, vehicle, vehicleProps)
 					end
 				else

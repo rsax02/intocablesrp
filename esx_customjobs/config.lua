@@ -69,7 +69,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 308,
+				Payment  = 1620,
 			} ,
 			--Fort Zancudo (Route 68) 3.02KM
 			Delivery2 = {
@@ -85,7 +85,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment =340,
+				Payment =1710,
 			},
 			Delivery3 = {
 				Route={
@@ -101,7 +101,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 320,
+				Payment  = 1680,
 			},
 			--Senora Freeway (right side towards paleto) 5.91KM
 			Delivery4 = {
@@ -119,7 +119,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 370,
+				Payment  = 1705,
 			} ,
 			--Paleto Boulevard (At the paleto garage) 7.42KM
 			Delivery5 = {
@@ -136,7 +136,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 380,
+				Payment  = 1690,
 			},
 			--Senora Freeway (close to YOUTOOL) 3.14KM
 			Delivery6 = {
@@ -154,7 +154,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 310,
+				Payment  = 1690,
 			},
 			Delivery7 = {
 				Route={
@@ -171,7 +171,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 290,
+				Payment  = 1800,
 			},
 			Delivery8 = {
 				Route={
@@ -187,7 +187,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 310,
+				Payment  = 1750,
 			},
 			Delivery9 = {
 				Route={
@@ -204,7 +204,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 320,
+				Payment  = 1850,
 			},
 			Delivery10 = {
 				Route={
@@ -220,7 +220,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 360,
+				Payment  = 1630,
 			},
 		}
 	},
@@ -279,7 +279,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 810,
+				Payment  = 880,
 			} ,
 			--Fort Zancudo (Route 68) 3.02KM
 			Delivery2 = {
@@ -290,7 +290,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment = 820,
+				Payment = 1060,
 			},
 			Delivery3 = {
 				Route={
@@ -301,7 +301,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 760,
+				Payment  = 985,
 			},
 			--Senora Freeway (right side towards paleto) 5.91KM
 			Delivery4 = {
@@ -312,7 +312,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 1090,
+				Payment  = 1270,
 			} ,
 			--Paleto Boulevard (At the paleto garage) 7.42KM
 			Delivery5 = {
@@ -324,7 +324,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 1100,
+				Payment  = 1305,
 			},
 			--Senora Freeway (close to YOUTOOL) 3.14KM
 			Delivery6 = {
@@ -336,7 +336,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 790,
+				Payment  = 1200,
 			},
 			Delivery7 = {
 				Route={
@@ -347,7 +347,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 950,
+				Payment  = 1000,
 			},
 			Delivery8 = {
 				Route={
@@ -357,7 +357,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 850,
+				Payment  = 1015,
 			},
 			Delivery9 = {
 				Route={
@@ -368,7 +368,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 890,
+				Payment  = 970,
 			},
 			Delivery10 = {
 				Route={
@@ -378,7 +378,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 780,
+				Payment  = 960,
 			},
 			Delivery11 = {
 				Route={
@@ -388,7 +388,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 720,
+				Payment  = 870,
 			},
 			Delivery12 = {
 				Route={
@@ -398,7 +398,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 750,
+				Payment  = 870,
 			},
 			Delivery13 = {
 				Route={
@@ -408,7 +408,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 680,
+				Payment  = 840,
 			},
 			Delivery14 = {
 				Route={
@@ -418,7 +418,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 710,
+				Payment  = 880,
 			},
 			Delivery15 = {
 				Route={
@@ -428,7 +428,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 990,
+				Payment  = 1280,
 			},
 			Delivery16 = {
 				Route={
@@ -438,7 +438,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 750,
+				Payment  = 890,
 			},
 			Delivery17 = {
 				Route={
@@ -448,7 +448,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 750,
+				Payment  = 890,
 			},
 			Delivery18 = {
 				Route={
@@ -458,7 +458,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 780,
+				Payment  = 980,
 			},
 			Delivery19 = {
 				Route={
@@ -468,7 +468,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 690,
+				Payment  = 840,
 			},
 			Delivery20 = {
 				Route={
@@ -478,7 +478,7 @@ Config.Jobs={
 				Size  = {x = 3.0, y = 3.0, z = 1.0},
 				Color = {r = 204, g = 204, b = 0},
 				Type  = 1,
-				Payment  = 850,
+				Payment  = 970,
 			},
 
 		}
@@ -594,7 +594,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 308,
+		Payment  = 480,
 	} ,
 	--Fort Zancudo (Route 68) 3.02KM
 	Delivery2 = {
@@ -610,7 +610,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment =340,
+		Payment =450,
 	},
 	Delivery3 = {
 		Route={
@@ -626,7 +626,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 320,
+		Payment  = 610,
 	},
 	--Senora Freeway (right side towards paleto) 5.91KM
 	Delivery4 = {
@@ -644,7 +644,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 370,
+		Payment  = 550,
 	} ,
 	--Paleto Boulevard (At the paleto garage) 7.42KM
 	Delivery5 = {
@@ -661,7 +661,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 380,
+		Payment  = 630,
 	},
 	--Senora Freeway (close to YOUTOOL) 3.14KM
 	Delivery6 = {
@@ -679,7 +679,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 310,
+		Payment  = 460,
 	},
 	Delivery7 = {
 		Route={
@@ -696,7 +696,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 290,
+		Payment  = 400,
 	},
 	Delivery8 = {
 		Route={
@@ -712,7 +712,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 310,
+		Payment  = 410,
 	},
 	Delivery9 = {
 		Route={
@@ -729,7 +729,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 320,
+		Payment  = 420,
 	},
 		Delivery10 = {
 		Route={
@@ -745,7 +745,7 @@ Config.Delivery = {
 		Size  = {x = 3.0, y = 3.0, z = 1.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Payment  = 360,
+		Payment  = 440,
 	},
 	
 	--[[###Between Blaine County and Los Santos###
@@ -1167,7 +1167,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 320
+			Paye = 290
 		},
 	-- fleeca2
 	Delivery2LS = {
@@ -1176,7 +1176,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 390
+			Paye = 320
 		},
 	-- blainecounty
 	Delivery3LS = {
@@ -1185,7 +1185,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 320
+			Paye = 300
 		},
 	-- PrincipalBank
 	Delivery4LS = {
@@ -1194,7 +1194,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 420
+			Paye = 355
 		},
 	-- route68e
 	Delivery5LS = {
@@ -1203,7 +1203,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 390
+			Paye = 340
 		},
 	--littleseoul
 	Delivery6LS = {
@@ -1212,7 +1212,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 420
+			Paye = 375
 		},
 	--grovestreetgas
 	Delivery7LS = {
@@ -1221,7 +1221,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 295
+			Paye = 280
 		},
 	--fleecacarpark
 	Delivery8LS = {
@@ -1230,7 +1230,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 330
+			Paye = 310
 		},
 	--Mt Haan Dr Radio Tower
 	Delivery9LS = {
@@ -1239,7 +1239,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 320
+			Paye = 290
 		},
 	--Senora Way Fuel Depot
 	Delivery10LS = {
@@ -1248,7 +1248,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 370
+			Paye = 335
 		},
 -- 2nd Patrol
 	-- Palomino Noose HQ
@@ -1258,7 +1258,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 320
+			Paye = 300
 		},
 	-- El Burro Oil plain
 	Delivery2BC = {
@@ -1267,7 +1267,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 300
+			Paye = 290
 		},
 	-- Orchardville ave
 	Delivery3BC = {
@@ -1276,7 +1276,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 360
+			Paye = 335
 		},
 	-- Elysian Fields
 	Delivery4BC = {
@@ -1285,7 +1285,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 350
+			Paye = 340
 		},
 
 		-- Carson Ave
@@ -1295,7 +1295,7 @@ GarbageConfig.Livraison = {
 		Size  = {x = 5.0, y = 5.0, z = 3.0},
 		Color = {r = 204, g = 204, b = 0},
 		Type  = 1,
-		Paye = 410
+		Paye = 370
 	},
 
 
@@ -1306,7 +1306,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 390
+			Paye = 360
 		},
 	-- Dutch London
 	Delivery7BC = {
@@ -1315,7 +1315,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 350
+			Paye = 320
 		},
 	-- Autopia Pkwy
 	Delivery8BC = {
@@ -1324,7 +1324,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 350
+			Paye = 330
 		},
 	-- Miriam Turner Overpass
 	Delivery9BC = {
@@ -1333,7 +1333,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 390
+			Paye = 380
 		},
 	-- Exceptionalist Way
 	Delivery10BC = {
@@ -1342,7 +1342,7 @@ GarbageConfig.Livraison = {
 			Size  = {x = 5.0, y = 5.0, z = 3.0},
 			Color = {r = 204, g = 204, b = 0},
 			Type  = 1,
-			Paye = 350
+			Paye = 340
 		},
 
 	RetourCamion = {

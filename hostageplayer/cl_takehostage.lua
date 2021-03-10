@@ -5,7 +5,9 @@
 local hostageAllowedWeapons = {
 	"WEAPON_PISTOL",
 	"WEAPON_COMBATPISTOL",
-	"WEAPON_HEAVYPISTOL"
+	"WEAPON_HEAVYPISTOL",
+	"WEAPON_SNSPISTOL",
+	"WEAPON_KNIFE"
 	--etc add guns you want
 }
 
@@ -30,16 +32,14 @@ RegisterCommand("th",function()
 end)
 
 function takeHostage()
-	local ped = GetPlayerPed(-1)
+	local ped = PlayerPedId()
 	ClearPedSecondaryTask(ped)
 	DetachEntity(ped, true, false)
 	for i=1, #hostageAllowedWeapons do
 		if HasPedGotWeapon(ped, GetHashKey(hostageAllowedWeapons[i]), false) then
-			if GetAmmoInPedWeapon(ped, GetHashKey(hostageAllowedWeapons[i])) > 0 then
-				canTakeHostage = true 
-				foundWeapon = GetHashKey(hostageAllowedWeapons[i])
-				break
-			end 					
+			canTakeHostage = true 
+			foundWeapon = GetHashKey(hostageAllowedWeapons[i])
+			break 					
 		end
 	end
 

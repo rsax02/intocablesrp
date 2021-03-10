@@ -180,6 +180,7 @@ function MenuCloakRoom()
 		function(data, menu)
 			if data.current.value == 'citizen_wear' then
 					isInService = false
+					isWorking=false
 					ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 						  TriggerEvent('skinchanger:loadSkin', skin)
 					end)
@@ -190,6 +191,7 @@ function MenuCloakRoom()
 					ESX.TriggerServerCallback('esx_jobs:inService',function(can)
 						if can then
 							isInService = true
+							isWorking=true
 							ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 								TriggerEvent('skinchanger:loadClothes', skin, skin.sex == 0 and jobSkin.skin_male or jobSkin.skin_female)
 							end)	 
@@ -356,20 +358,8 @@ end)
 
 function nouvelledestination()
 	livraisonnombre = livraisonnombre+1
-	local count = 0
-	local multibagpay = 0
-		for i, v in pairs(temppaytable) do
-		count = count + 1
-	end
 
-	if GarbageConfig.MulitplyBags then
-	multibagpay = totalbagpay * (count + 1)
-	else
-	multibagpay = totalbagpay
-	end
-
-	local testprint = (destination.Paye + multibagpay)
-	local temppayamount =  (destination.Paye + multibagpay) / (count + 1)
+	local temppayamount =  destination.Paye
 	TriggerServerEvent('esx_garbage:requestpay', platenumb,  temppayamount)
 	livraisonTotalPaye = 0
 	totalbagpay = 0
@@ -562,7 +552,7 @@ end
 
 function SelectBinandCrew()
 	work_truck = GetVehiclePedIsIn(ped, true)
-	bagsoftrash = math.random(2,7)
+	bagsoftrash = math.random(3,7)
 	local NewBin, NewBinDistance = ESX.Game.GetClosestObject(GarbageConfig.DumpstersAvaialbe)
 	trashcollectionpos = GetEntityCoords(NewBin)
 	platenumb = GetVehicleNumberPlateText(GetVehiclePedIsIn(ped, true))

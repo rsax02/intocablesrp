@@ -349,6 +349,26 @@ AddEventHandler('esx_skin:openSaveathecrowsrp2bleMenu', function(submitCb, cance
 				})
 end)
 
+RegisterNetEvent('esx_skin:openSaveathecrowsrp2bleMenu2')
+AddEventHandler('esx_skin:openSaveathecrowsrp2bleMenu2', function(submitCb, cancelCb)
+	OpenSaveableMenu(submitCb, cancelCb, 
+					{
+					'face',
+					'skin',
+					'hair_1','hair_2',
+					'hair_color_1','hair_color_2',
+					'arms',
+					'bags_1',
+					'watches_1', 'watches_2',
+					'eye_color', 'eyebrows_1', 
+					'eyebrows_2', 'eyebrows_3',
+					'chest_1','chest_2','chest_3',
+					'complexion_1','complexion_2',
+					'sun_1','sun_2','moles_1','moles_2',
+					'beard_1','beard_2','beard_3',
+				})
+end)
+
 RegisterNetEvent('esx_skin:firstJoin')
 AddEventHandler('esx_skin:firstJoin', function()
 	--OpenSaveableMenu(submitCb, cancelCb, nil)
